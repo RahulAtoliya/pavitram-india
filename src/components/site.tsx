@@ -160,24 +160,53 @@ export function Navbar() {
     return () => clearInterval(interval);
   }, []);
 
-  const clearTransCookie = () => {
+  const updateTransCookie = (value: string | null) => {
     if (typeof document === "undefined") return;
 
-    // Clear default cookie
-    document.cookie = "googtrans=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-    document.cookie = "googtrans=/en/en; Path=/;";
+    // 1. Get all path prefixes of the current URL to override path-specific cookies
+    const paths = ["/"];
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    let currentPath = "";
+    for (const part of pathParts) {
+      currentPath += "/" + part;
+      paths.push(currentPath);
+      paths.push(currentPath + "/");
+    }
 
+    // 2. Get all domain variations
     const host = window.location.hostname;
-    const parts = host.split(".");
-
-    // Clear and override googtrans cookie on all domain segments
-    for (let i = 0; i < parts.length; i++) {
-      const domain = parts.slice(i).join(".");
+    const domains = [undefined, host, `.${host}`];
+    const hostParts = host.split(".");
+    for (let i = 0; i < hostParts.length; i++) {
+      const domain = hostParts.slice(i).join(".");
       if (domain) {
-        document.cookie = `googtrans=; Path=/; Domain=${domain}; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
-        document.cookie = `googtrans=; Path=/; Domain=.${domain}; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
-        document.cookie = `googtrans=/en/en; Path=/; Domain=${domain};`;
-        document.cookie = `googtrans=/en/en; Path=/; Domain=.${domain};`;
+        domains.push(domain);
+        domains.push(`.${domain}`);
+      }
+    }
+
+    const uniqueDomains = Array.from(new Set(domains));
+    const uniquePaths = Array.from(new Set(paths));
+
+    // 3. Clear/expire existing cookies on all combinations of paths and domains
+    for (const path of uniquePaths) {
+      for (const domain of uniqueDomains) {
+        const domainString = domain ? `; Domain=${domain}` : "";
+        const pathString = `; Path=${path}`;
+        const expireString = "; Expires=Thu, 01 Jan 1970 00:00:01 GMT";
+
+        document.cookie = `googtrans=;${domainString}${pathString}${expireString};`;
+      }
+    }
+
+    // 4. Set the new cookie value on all paths and domains
+    if (value) {
+      for (const path of uniquePaths) {
+        for (const domain of uniqueDomains) {
+          const domainString = domain ? `; Domain=${domain}` : "";
+          const pathString = `; Path=${path}`;
+          document.cookie = `googtrans=${value}${domainString}${pathString};`;
+        }
       }
     }
   };
@@ -186,12 +215,19 @@ export function Navbar() {
     const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
     if (isHindi) {
       // Revert to English: clear cookies and reload to restore original state
-      clearTransCookie();
+      updateTransCookie("/en/en");
 
       if (select) {
-        select.value = "en";
-        if (!select.value) {
+        // Try setting select value to "" first (original page language)
+        select.value = "";
+        // If that didn't work (some browsers), try index 0
+        if (!select.value && select.options.length > 0) {
           select.selectedIndex = 0;
+        }
+        // If "en" option exists specifically, use it
+        const hasEn = Array.from(select.options).some((opt) => opt.value === "en");
+        if (hasEn) {
+          select.value = "en";
         }
         select.dispatchEvent(new Event("change"));
       }
@@ -200,17 +236,8 @@ export function Navbar() {
         window.location.reload();
       }, 150);
     } else {
-      // Translate to Hindi: set cookie on all domain levels
-      document.cookie = "googtrans=/en/hi; Path=/;";
-      const host = window.location.hostname;
-      const parts = host.split(".");
-      for (let i = 0; i < parts.length; i++) {
-        const domain = parts.slice(i).join(".");
-        if (domain) {
-          document.cookie = `googtrans=/en/hi; Path=/; Domain=${domain};`;
-          document.cookie = `googtrans=/en/hi; Path=/; Domain=.${domain};`;
-        }
-      }
+      // Translate to Hindi
+      updateTransCookie("/en/hi");
 
       if (select) {
         select.value = "hi";
