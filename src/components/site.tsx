@@ -5,9 +5,9 @@ import {
   ArrowRight, ArrowUp, ChevronDown, Menu, X,
   MessageCircle, Facebook, Instagram, Youtube, Twitter,
 } from "lucide-react";
-import logoAsset from "@/assets/pavitram-logo.png.asset.json";
+import LOGO_URL from "@/assets/pavitram-logo.jpg";
 
-export const LOGO_URL = logoAsset.url;
+export { LOGO_URL };
 
 /* ─────────── motion helpers ─────────── */
 

@@ -8,9 +8,7 @@ import {
   Globe, ShieldCheck, BarChart3, Building, CheckCircle2, UsersRound, Handshake,
   Quote, MessageCircle, Facebook, Instagram, Youtube, Twitter, Sparkles,
 } from "lucide-react";
-import logoAsset from "@/assets/pavitram-logo.png.asset.json";
-
-const LOGO_URL = logoAsset.url;
+import LOGO_URL from "@/assets/pavitram-logo.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({

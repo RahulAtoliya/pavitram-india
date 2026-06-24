@@ -69,8 +69,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-import logoAsset from "@/assets/pavitram-logo.png.asset.json";
-const FAVICON = logoAsset.url;
+import FAVICON from "@/assets/pavitram-logo.jpg";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
