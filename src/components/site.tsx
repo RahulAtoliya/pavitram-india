@@ -134,7 +134,9 @@ export function Navbar() {
     if (typeof document === "undefined") return null;
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(";").shift();
+    if (parts.length > 1) {
+      return parts[1].split(";").shift() || null;
+    }
     return null;
   };
 
@@ -242,10 +244,11 @@ export function Navbar() {
       if (select) {
         select.value = "hi";
         select.dispatchEvent(new Event("change"));
-      } else {
-        window.location.reload();
       }
       setIsHindi(true);
+      setTimeout(() => {
+        window.location.reload();
+      }, 150);
     }
   };
 
