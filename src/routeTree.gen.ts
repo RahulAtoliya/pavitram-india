@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OpportunitiesMerchantRouteImport } from './routes/opportunities.merchant'
@@ -29,6 +31,16 @@ const ServicesRoute = ServicesRouteImport.update({
 const OpportunitiesRoute = OpportunitiesRouteImport.update({
   id: '/opportunities',
   path: '/opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -80,6 +92,8 @@ const AboutMissionRoute = AboutMissionRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/opportunities': typeof OpportunitiesRouteWithChildren
   '/services': typeof ServicesRoute
   '/about/mission': typeof AboutMissionRoute
@@ -93,6 +107,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/opportunities': typeof OpportunitiesRouteWithChildren
   '/services': typeof ServicesRoute
   '/about/mission': typeof AboutMissionRoute
@@ -107,6 +123,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/opportunities': typeof OpportunitiesRouteWithChildren
   '/services': typeof ServicesRoute
   '/about/mission': typeof AboutMissionRoute
@@ -122,6 +140,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/contact'
+    | '/faq'
     | '/opportunities'
     | '/services'
     | '/about/mission'
@@ -135,6 +155,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/contact'
+    | '/faq'
     | '/opportunities'
     | '/services'
     | '/about/mission'
@@ -148,6 +170,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/contact'
+    | '/faq'
     | '/opportunities'
     | '/services'
     | '/about/mission'
@@ -162,6 +186,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
   OpportunitiesRoute: typeof OpportunitiesRouteWithChildren
   ServicesRoute: typeof ServicesRoute
 }
@@ -180,6 +206,20 @@ declare module '@tanstack/react-router' {
       path: '/opportunities'
       fullPath: '/opportunities'
       preLoaderRoute: typeof OpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -283,6 +323,8 @@ const OpportunitiesRouteWithChildren = OpportunitiesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRouteWithChildren,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
   OpportunitiesRoute: OpportunitiesRouteWithChildren,
   ServicesRoute: ServicesRoute,
 }
