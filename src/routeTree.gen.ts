@@ -13,6 +13,10 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OpportunitiesMerchantRouteImport } from './routes/opportunities.merchant'
+import { Route as OpportunitiesInvestorRouteImport } from './routes/opportunities.investor'
+import { Route as OpportunitiesConsumerRouteImport } from './routes/opportunities.consumer'
+import { Route as OpportunitiesCareerRouteImport } from './routes/opportunities.career'
 import { Route as AboutVisionRouteImport } from './routes/about.vision'
 import { Route as AboutPhilosophyRouteImport } from './routes/about.philosophy'
 import { Route as AboutMissionRouteImport } from './routes/about.mission'
@@ -37,6 +41,26 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OpportunitiesMerchantRoute = OpportunitiesMerchantRouteImport.update({
+  id: '/merchant',
+  path: '/merchant',
+  getParentRoute: () => OpportunitiesRoute,
+} as any)
+const OpportunitiesInvestorRoute = OpportunitiesInvestorRouteImport.update({
+  id: '/investor',
+  path: '/investor',
+  getParentRoute: () => OpportunitiesRoute,
+} as any)
+const OpportunitiesConsumerRoute = OpportunitiesConsumerRouteImport.update({
+  id: '/consumer',
+  path: '/consumer',
+  getParentRoute: () => OpportunitiesRoute,
+} as any)
+const OpportunitiesCareerRoute = OpportunitiesCareerRouteImport.update({
+  id: '/career',
+  path: '/career',
+  getParentRoute: () => OpportunitiesRoute,
+} as any)
 const AboutVisionRoute = AboutVisionRouteImport.update({
   id: '/vision',
   path: '/vision',
@@ -56,30 +80,42 @@ const AboutMissionRoute = AboutMissionRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRouteWithChildren
-  '/opportunities': typeof OpportunitiesRoute
+  '/opportunities': typeof OpportunitiesRouteWithChildren
   '/services': typeof ServicesRoute
   '/about/mission': typeof AboutMissionRoute
   '/about/philosophy': typeof AboutPhilosophyRoute
   '/about/vision': typeof AboutVisionRoute
+  '/opportunities/career': typeof OpportunitiesCareerRoute
+  '/opportunities/consumer': typeof OpportunitiesConsumerRoute
+  '/opportunities/investor': typeof OpportunitiesInvestorRoute
+  '/opportunities/merchant': typeof OpportunitiesMerchantRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRouteWithChildren
-  '/opportunities': typeof OpportunitiesRoute
+  '/opportunities': typeof OpportunitiesRouteWithChildren
   '/services': typeof ServicesRoute
   '/about/mission': typeof AboutMissionRoute
   '/about/philosophy': typeof AboutPhilosophyRoute
   '/about/vision': typeof AboutVisionRoute
+  '/opportunities/career': typeof OpportunitiesCareerRoute
+  '/opportunities/consumer': typeof OpportunitiesConsumerRoute
+  '/opportunities/investor': typeof OpportunitiesInvestorRoute
+  '/opportunities/merchant': typeof OpportunitiesMerchantRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRouteWithChildren
-  '/opportunities': typeof OpportunitiesRoute
+  '/opportunities': typeof OpportunitiesRouteWithChildren
   '/services': typeof ServicesRoute
   '/about/mission': typeof AboutMissionRoute
   '/about/philosophy': typeof AboutPhilosophyRoute
   '/about/vision': typeof AboutVisionRoute
+  '/opportunities/career': typeof OpportunitiesCareerRoute
+  '/opportunities/consumer': typeof OpportunitiesConsumerRoute
+  '/opportunities/investor': typeof OpportunitiesInvestorRoute
+  '/opportunities/merchant': typeof OpportunitiesMerchantRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +127,10 @@ export interface FileRouteTypes {
     | '/about/mission'
     | '/about/philosophy'
     | '/about/vision'
+    | '/opportunities/career'
+    | '/opportunities/consumer'
+    | '/opportunities/investor'
+    | '/opportunities/merchant'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +140,10 @@ export interface FileRouteTypes {
     | '/about/mission'
     | '/about/philosophy'
     | '/about/vision'
+    | '/opportunities/career'
+    | '/opportunities/consumer'
+    | '/opportunities/investor'
+    | '/opportunities/merchant'
   id:
     | '__root__'
     | '/'
@@ -109,12 +153,16 @@ export interface FileRouteTypes {
     | '/about/mission'
     | '/about/philosophy'
     | '/about/vision'
+    | '/opportunities/career'
+    | '/opportunities/consumer'
+    | '/opportunities/investor'
+    | '/opportunities/merchant'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRouteWithChildren
-  OpportunitiesRoute: typeof OpportunitiesRoute
+  OpportunitiesRoute: typeof OpportunitiesRouteWithChildren
   ServicesRoute: typeof ServicesRoute
 }
 
@@ -147,6 +195,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/opportunities/merchant': {
+      id: '/opportunities/merchant'
+      path: '/merchant'
+      fullPath: '/opportunities/merchant'
+      preLoaderRoute: typeof OpportunitiesMerchantRouteImport
+      parentRoute: typeof OpportunitiesRoute
+    }
+    '/opportunities/investor': {
+      id: '/opportunities/investor'
+      path: '/investor'
+      fullPath: '/opportunities/investor'
+      preLoaderRoute: typeof OpportunitiesInvestorRouteImport
+      parentRoute: typeof OpportunitiesRoute
+    }
+    '/opportunities/consumer': {
+      id: '/opportunities/consumer'
+      path: '/consumer'
+      fullPath: '/opportunities/consumer'
+      preLoaderRoute: typeof OpportunitiesConsumerRouteImport
+      parentRoute: typeof OpportunitiesRoute
+    }
+    '/opportunities/career': {
+      id: '/opportunities/career'
+      path: '/career'
+      fullPath: '/opportunities/career'
+      preLoaderRoute: typeof OpportunitiesCareerRouteImport
+      parentRoute: typeof OpportunitiesRoute
     }
     '/about/vision': {
       id: '/about/vision'
@@ -186,10 +262,28 @@ const AboutRouteChildren: AboutRouteChildren = {
 
 const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)
 
+interface OpportunitiesRouteChildren {
+  OpportunitiesCareerRoute: typeof OpportunitiesCareerRoute
+  OpportunitiesConsumerRoute: typeof OpportunitiesConsumerRoute
+  OpportunitiesInvestorRoute: typeof OpportunitiesInvestorRoute
+  OpportunitiesMerchantRoute: typeof OpportunitiesMerchantRoute
+}
+
+const OpportunitiesRouteChildren: OpportunitiesRouteChildren = {
+  OpportunitiesCareerRoute: OpportunitiesCareerRoute,
+  OpportunitiesConsumerRoute: OpportunitiesConsumerRoute,
+  OpportunitiesInvestorRoute: OpportunitiesInvestorRoute,
+  OpportunitiesMerchantRoute: OpportunitiesMerchantRoute,
+}
+
+const OpportunitiesRouteWithChildren = OpportunitiesRoute._addFileChildren(
+  OpportunitiesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRouteWithChildren,
-  OpportunitiesRoute: OpportunitiesRoute,
+  OpportunitiesRoute: OpportunitiesRouteWithChildren,
   ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
