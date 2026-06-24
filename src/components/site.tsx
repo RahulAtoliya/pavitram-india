@@ -162,14 +162,23 @@ export function Navbar() {
 
   const clearTransCookie = () => {
     if (typeof document === "undefined") return;
+
+    // Clear default cookie
     document.cookie = "googtrans=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "googtrans=/en/en; Path=/;";
+
     const host = window.location.hostname;
     const parts = host.split(".");
-    while (parts.length > 0) {
-      const domain = parts.join(".");
-      document.cookie = `googtrans=; Path=/; Domain=${domain}; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
-      document.cookie = `googtrans=; Path=/; Domain=.${domain}; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
-      parts.shift();
+
+    // Clear and override googtrans cookie on all domain segments
+    for (let i = 0; i < parts.length; i++) {
+      const domain = parts.slice(i).join(".");
+      if (domain) {
+        document.cookie = `googtrans=; Path=/; Domain=${domain}; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+        document.cookie = `googtrans=; Path=/; Domain=.${domain}; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+        document.cookie = `googtrans=/en/en; Path=/; Domain=${domain};`;
+        document.cookie = `googtrans=/en/en; Path=/; Domain=.${domain};`;
+      }
     }
   };
 
@@ -189,15 +198,24 @@ export function Navbar() {
       setIsHindi(false);
       setTimeout(() => {
         window.location.reload();
-      }, 100);
+      }, 150);
     } else {
-      // Translate to Hindi
+      // Translate to Hindi: set cookie on all domain levels
+      document.cookie = "googtrans=/en/hi; Path=/;";
+      const host = window.location.hostname;
+      const parts = host.split(".");
+      for (let i = 0; i < parts.length; i++) {
+        const domain = parts.slice(i).join(".");
+        if (domain) {
+          document.cookie = `googtrans=/en/hi; Path=/; Domain=${domain};`;
+          document.cookie = `googtrans=/en/hi; Path=/; Domain=.${domain};`;
+        }
+      }
+
       if (select) {
         select.value = "hi";
         select.dispatchEvent(new Event("change"));
       } else {
-        document.cookie = "googtrans=/en/hi; path=/;";
-        document.cookie = "googtrans=/en/hi; path=/; domain=" + window.location.hostname;
         window.location.reload();
       }
       setIsHindi(true);
