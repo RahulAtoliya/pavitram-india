@@ -162,29 +162,35 @@ export function Navbar() {
 
   const toggleLanguage = () => {
     const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
-    if (select) {
-      if (isHindi) {
-        select.value = ""; // Reset to English
-        setIsHindi(false);
-      } else {
-        select.value = "hi";
-        setIsHindi(true);
+    if (isHindi) {
+      // Revert to English: clear cookies and reload to restore original state
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie =
+        "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" +
+        window.location.hostname;
+
+      if (select) {
+        select.value = "en";
+        if (!select.value) {
+          select.selectedIndex = 0;
+        }
+        select.dispatchEvent(new Event("change"));
       }
-      select.dispatchEvent(new Event("change"));
+      setIsHindi(false);
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     } else {
-      // Fallback: update cookie and reload
-      if (isHindi) {
-        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie =
-          "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" +
-          window.location.hostname;
-        setIsHindi(false);
+      // Translate to Hindi
+      if (select) {
+        select.value = "hi";
+        select.dispatchEvent(new Event("change"));
       } else {
         document.cookie = "googtrans=/en/hi; path=/;";
         document.cookie = "googtrans=/en/hi; path=/; domain=" + window.location.hostname;
-        setIsHindi(true);
+        window.location.reload();
       }
-      window.location.reload();
+      setIsHindi(true);
     }
   };
 
