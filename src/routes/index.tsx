@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   motion,
@@ -634,10 +634,31 @@ function Services() {
 
 function Opportunities() {
   const items = [
-    { icon: User, title: "As a Consumer", hi: "उपभोक्ता के रूप में" },
-    { icon: Store, title: "As a Merchant", hi: "व्यापारी के रूप में" },
-    { icon: TrendingUp, title: "As an Investor", hi: "निवेश के रूप में", filled: true },
-    { icon: BriefcaseBusiness, title: "As a Career", hi: "करियर के रूप में" },
+    {
+      icon: User,
+      title: "As a Consumer",
+      hi: "उपभोक्ता के रूप में",
+      to: "/opportunities/consumer",
+    },
+    {
+      icon: Store,
+      title: "As a Merchant",
+      hi: "व्यापारी के रूप में",
+      to: "/opportunities/merchant",
+    },
+    {
+      icon: TrendingUp,
+      title: "As an Investor",
+      hi: "निवेश के रूप में",
+      to: "/opportunities/investor",
+      filled: true,
+    },
+    {
+      icon: BriefcaseBusiness,
+      title: "As a Career",
+      hi: "करियर के रूप में",
+      to: "/opportunities/career",
+    },
   ];
   return (
     <section id="opportunities" className="bg-white py-24 md:py-32">
@@ -655,29 +676,28 @@ function Opportunities() {
           className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
           {items.map((it) => (
-            <motion.div
-              key={it.title}
-              variants={fadeUp}
-              whileHover={{ y: -6 }}
-              className="group rounded-[20px] border border-haze bg-white p-7 text-center card-shadow transition-all hover:border-gold hover:card-shadow-lg"
-            >
-              <div
-                className={`mx-auto grid h-16 w-16 place-items-center rounded-full transition ${
-                  it.filled
-                    ? "bg-navy text-white group-hover:bg-gold group-hover:text-navy"
-                    : "bg-[#FDF3E0] text-gold group-hover:bg-gold group-hover:text-white"
-                }`}
+            <motion.div key={it.title} variants={fadeUp} whileHover={{ y: -6 }} className="flex">
+              <Link
+                to={it.to}
+                className="group flex flex-1 flex-col items-center justify-between rounded-[20px] border border-haze bg-white p-7 text-center card-shadow transition-all hover:border-gold hover:card-shadow-lg"
               >
-                <it.icon className="h-7 w-7" />
-              </div>
-              <h3 className="mt-6 font-display text-xl font-bold text-ink">{it.title}</h3>
-              <p className="mt-1 font-deva text-sm font-semibold text-gold">{it.hi}</p>
-              <a
-                href="#"
-                className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-ink transition group-hover:text-gold"
-              >
-                Register <ArrowRight className="h-4 w-4" />
-              </a>
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`mx-auto grid h-16 w-16 place-items-center rounded-full transition ${
+                      it.filled
+                        ? "bg-navy text-white group-hover:bg-gold group-hover:text-navy"
+                        : "bg-[#FDF3E0] text-gold group-hover:bg-gold group-hover:text-white"
+                    }`}
+                  >
+                    <it.icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="mt-6 font-display text-xl font-bold text-ink">{it.title}</h3>
+                  <p className="mt-1 font-deva text-sm font-semibold text-gold">{it.hi}</p>
+                </div>
+                <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-ink transition group-hover:text-gold">
+                  Register <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
