@@ -396,9 +396,22 @@ export function Navbar() {
           </Link>
         </div>
 
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-gold">
-          {open ? <X /> : <Menu />}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <button
+            onClick={toggleLanguage}
+            className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-sm font-bold text-white/90 transition hover:border-gold hover:text-gold font-deva cursor-pointer"
+            title={isHindi ? "Translate to English" : "हिन्दी में अनुवाद करें"}
+          >
+            {isHindi ? "EN" : "हि"}
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-gold cursor-pointer"
+            aria-label="Toggle Menu"
+          >
+            {open ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {open && (

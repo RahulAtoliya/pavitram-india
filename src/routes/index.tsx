@@ -261,10 +261,10 @@ function HeroDiagram() {
   ];
 
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[460px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[270px] sm:max-w-[360px] md:max-w-[460px] py-6 sm:py-0">
       {/* dot grid */}
       <div
-        className="absolute inset-[-40px] opacity-30"
+        className="absolute inset-[-20px] sm:inset-[-40px] opacity-30"
         style={{
           backgroundImage: "radial-gradient(rgba(201,149,42,0.35) 1px, transparent 1px)",
           backgroundSize: "22px 22px",
@@ -300,15 +300,19 @@ function HeroDiagram() {
 
       {/* center logo */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="grid h-28 w-28 place-items-center overflow-hidden rounded-full bg-navy ring-2 ring-gold/60 animate-pulse-glow">
-          <img src={LOGO_URL} alt="Pavitram India" className="h-24 w-24 object-contain" />
+        <div className="grid h-20 w-20 sm:h-28 sm:w-28 place-items-center overflow-hidden rounded-full bg-navy ring-2 ring-gold/60 animate-pulse-glow">
+          <img
+            src={LOGO_URL}
+            alt="Pavitram India"
+            className="h-16 w-16 sm:h-24 sm:w-24 object-contain"
+          />
         </div>
       </div>
 
       {/* labels */}
       {labels.map((l) => (
         <div key={l.text} className={`absolute ${l.pos} z-10`}>
-          <div className="glass-card whitespace-nowrap rounded-full border-gold/40 px-4 py-2 text-xs font-semibold text-white shadow-[0_0_24px_rgba(201,149,42,0.18)]">
+          <div className="glass-card whitespace-nowrap rounded-full border-gold/40 px-2.5 py-1 text-[10px] sm:px-4 sm:py-2 sm:text-xs font-semibold text-white shadow-[0_0_24px_rgba(201,149,42,0.18)]">
             {l.text}
           </div>
         </div>
