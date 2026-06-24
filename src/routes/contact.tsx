@@ -1,13 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { MapPin, Phone, Mail, Globe, MessageCircle, Instagram, Youtube, Facebook, Loader2 } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Globe,
+  MessageCircle,
+  Instagram,
+  Youtube,
+  Facebook,
+  Loader2,
+} from "lucide-react";
 import { PageHero, Reveal, GoldLabel, FinalCTA, showToast } from "@/components/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Pavitram India" },
-      { name: "description", content: "Get in touch with Pavitram India for community, business, investment or employment enquiries." },
+      {
+        name: "description",
+        content:
+          "Get in touch with Pavitram India for community, business, investment or employment enquiries.",
+      },
       { property: "og:title", content: "Contact Pavitram India" },
       { property: "og:description", content: "Reach our cooperative community team." },
     ],
@@ -15,25 +29,55 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-type Form = { name: string; mobile: string; email: string; role: string; purpose: string; message: string };
+type Form = {
+  name: string;
+  mobile: string;
+  email: string;
+  role: string;
+  purpose: string;
+  message: string;
+};
 const ROLES = ["Consumer", "Merchant", "Investor", "Career", "Other"];
-const PURPOSES = ["Join Community", "Business Inquiry", "Investment", "Employment", "General Query"];
+const PURPOSES = [
+  "Join Community",
+  "Business Inquiry",
+  "Investment",
+  "Employment",
+  "General Query",
+];
 
-function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+function Field({
+  label,
+  required,
+  children,
+}: {
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
   return (
     <label className="block">
       <span className="block text-[11px] font-bold uppercase tracking-widest text-ink/80">
-        {label}{required && <span className="text-gold"> *</span>}
+        {label}
+        {required && <span className="text-gold"> *</span>}
       </span>
       <div className="mt-2">{children}</div>
     </label>
   );
 }
 
-const inputCls = "w-full rounded-[10px] border border-[#E2E8F0] bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-gold focus:shadow-[0_0_0_3px_rgba(201,149,42,0.18)]";
+const inputCls =
+  "w-full rounded-[10px] border border-[#E2E8F0] bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-gold focus:shadow-[0_0_0_3px_rgba(201,149,42,0.18)]";
 
 function ContactPage() {
-  const [f, setF] = useState<Form>({ name: "", mobile: "", email: "", role: "", purpose: "", message: "" });
+  const [f, setF] = useState<Form>({
+    name: "",
+    mobile: "",
+    email: "",
+    role: "",
+    purpose: "",
+    message: "",
+  });
   const [sending, setSending] = useState(false);
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setF((p) => ({ ...p, [k]: v }));
 
@@ -64,19 +108,35 @@ function ContactPage() {
             <h2 className="font-display text-3xl font-bold text-ink">Contact Information</h2>
             <div className="mt-8 space-y-4">
               {[
-                { Icon: MapPin, title: "Registered Office", body: "Pavitram India Corporate HQ\nSector 75, Industrial Estate\nMadhya Pradesh 462001, India" },
-                { Icon: Phone, title: "Phone / WhatsApp", body: "+91 9-165-166-000", badge: "WhatsApp Enabled" },
+                {
+                  Icon: MapPin,
+                  title: "Registered Office",
+                  body: "Pavitram India Corporate HQ\nSector 75, Industrial Estate\nMadhya Pradesh 462001, India",
+                },
+                {
+                  Icon: Phone,
+                  title: "Phone / WhatsApp",
+                  body: "+91 9-165-166-000",
+                  badge: "WhatsApp Enabled",
+                },
                 { Icon: Mail, title: "Email", body: "hello@pavitramindia.com" },
                 { Icon: Globe, title: "Social", body: "pavitramindia.com", socials: true },
               ].map((c, i) => (
-                <div key={i} className="rounded-2xl bg-white p-5 shadow-[0_4px_18px_rgba(13,27,62,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(13,27,62,0.1)]">
+                <div
+                  key={i}
+                  className="rounded-2xl bg-white p-5 shadow-[0_4px_18px_rgba(13,27,62,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(13,27,62,0.1)]"
+                >
                   <div className="flex items-start gap-4">
                     <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gold/10 text-gold">
                       <c.Icon className="h-5 w-5" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-[11px] font-bold uppercase tracking-widest text-mist">{c.title}</p>
-                      <p className="mt-1 whitespace-pre-line text-sm font-medium text-ink">{c.body}</p>
+                      <p className="text-[11px] font-bold uppercase tracking-widest text-mist">
+                        {c.title}
+                      </p>
+                      <p className="mt-1 whitespace-pre-line text-sm font-medium text-ink">
+                        {c.body}
+                      </p>
                       {c.badge && (
                         <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-[11px] font-bold text-green-700">
                           <span className="h-1.5 w-1.5 rounded-full bg-green-600" /> {c.badge}
@@ -85,7 +145,11 @@ function ContactPage() {
                       {c.socials && (
                         <div className="mt-3 flex gap-2">
                           {[MessageCircle, Instagram, Youtube].map((I, k) => (
-                            <a key={k} href="#" className="grid h-9 w-9 place-items-center rounded-full border border-mist/20 text-mist transition hover:border-gold hover:text-gold">
+                            <a
+                              key={k}
+                              href="#"
+                              className="grid h-9 w-9 place-items-center rounded-full border border-mist/20 text-mist transition hover:border-gold hover:text-gold"
+                            >
                               <I className="h-4 w-4" />
                             </a>
                           ))}
@@ -98,10 +162,16 @@ function ContactPage() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#" className="inline-flex items-center gap-2 rounded-full border-2 border-green-500 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-green-600 transition hover:bg-green-500 hover:text-white">
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-green-500 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-green-600 transition hover:bg-green-500 hover:text-white"
+              >
                 <MessageCircle className="h-4 w-4" /> WhatsApp Community
               </a>
-              <a href="#" className="inline-flex items-center gap-2 rounded-full border-2 border-blue-500 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-blue-600 transition hover:bg-blue-500 hover:text-white">
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-blue-500 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-blue-600 transition hover:bg-blue-500 hover:text-white"
+              >
                 <Facebook className="h-4 w-4" /> Facebook Group
               </a>
             </div>
@@ -112,33 +182,68 @@ function ContactPage() {
               <h3 className="font-display text-2xl font-bold text-ink">Send a Message</h3>
               <div className="mt-6 space-y-5">
                 <Field label="Full Name" required>
-                  <input className={inputCls} placeholder="e.g. Ramesh Patel" value={f.name} onChange={(e) => set("name", e.target.value)} />
+                  <input
+                    className={inputCls}
+                    placeholder="e.g. Ramesh Patel"
+                    value={f.name}
+                    onChange={(e) => set("name", e.target.value)}
+                  />
                 </Field>
                 <Field label="Mobile Number" required>
                   <div className="flex gap-2">
-                    <select className={`${inputCls} w-24 shrink-0`} defaultValue="+91"><option>+91</option></select>
-                    <input className={inputCls} placeholder="10-digit mobile number" value={f.mobile} onChange={(e) => set("mobile", e.target.value)} />
+                    <select className={`${inputCls} w-24 shrink-0`} defaultValue="+91">
+                      <option>+91</option>
+                    </select>
+                    <input
+                      className={inputCls}
+                      placeholder="10-digit mobile number"
+                      value={f.mobile}
+                      onChange={(e) => set("mobile", e.target.value)}
+                    />
                   </div>
                 </Field>
                 <Field label="Email Address (Optional)">
-                  <input className={inputCls} placeholder="ramesh@example.com" value={f.email} onChange={(e) => set("email", e.target.value)} />
+                  <input
+                    className={inputCls}
+                    placeholder="ramesh@example.com"
+                    value={f.email}
+                    onChange={(e) => set("email", e.target.value)}
+                  />
                 </Field>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field label="I am a" required>
-                    <select className={inputCls} value={f.role} onChange={(e) => set("role", e.target.value)}>
+                    <select
+                      className={inputCls}
+                      value={f.role}
+                      onChange={(e) => set("role", e.target.value)}
+                    >
                       <option value="">Select Role</option>
-                      {ROLES.map(r => <option key={r}>{r}</option>)}
+                      {ROLES.map((r) => (
+                        <option key={r}>{r}</option>
+                      ))}
                     </select>
                   </Field>
                   <Field label="Purpose" required>
-                    <select className={inputCls} value={f.purpose} onChange={(e) => set("purpose", e.target.value)}>
+                    <select
+                      className={inputCls}
+                      value={f.purpose}
+                      onChange={(e) => set("purpose", e.target.value)}
+                    >
                       <option value="">Select Purpose</option>
-                      {PURPOSES.map(p => <option key={p}>{p}</option>)}
+                      {PURPOSES.map((p) => (
+                        <option key={p}>{p}</option>
+                      ))}
                     </select>
                   </Field>
                 </div>
                 <Field label="Message" required>
-                  <textarea rows={4} className={inputCls} placeholder="How can we help you?" value={f.message} onChange={(e) => set("message", e.target.value)} />
+                  <textarea
+                    rows={4}
+                    className={inputCls}
+                    placeholder="How can we help you?"
+                    value={f.message}
+                    onChange={(e) => set("message", e.target.value)}
+                  />
                 </Field>
 
                 <button
@@ -146,9 +251,17 @@ function ContactPage() {
                   disabled={sending}
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-bold text-white transition hover:bg-gold hover:text-navy disabled:opacity-70"
                 >
-                  {sending ? (<><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>) : "Send Message"}
+                  {sending ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" /> Sending...
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
-                <p className="text-center text-xs text-mist">Your information is safe with us. We never share personal data.</p>
+                <p className="text-center text-xs text-mist">
+                  Your information is safe with us. We never share personal data.
+                </p>
               </div>
             </div>
           </Reveal>
@@ -157,7 +270,9 @@ function ContactPage() {
         <div className="mx-auto mt-16 max-w-7xl px-6">
           <div className="flex h-[220px] flex-col items-center justify-center rounded-2xl bg-[#E8EDF3] text-mist">
             <MapPin className="h-8 w-8 text-gold" />
-            <p className="mt-3 text-xs font-bold uppercase tracking-widest">Map Embed Placeholder</p>
+            <p className="mt-3 text-xs font-bold uppercase tracking-widest">
+              Map Embed Placeholder
+            </p>
             <p className="mt-1 text-sm">Our registered office location</p>
           </div>
         </div>

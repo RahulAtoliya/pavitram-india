@@ -34,10 +34,14 @@ export function OppDetailPage({ d }: { d: OppDetail }) {
               <d.Icon className="h-8 w-8" />
             </div>
             <GoldLabel className="mt-6">Why Join</GoldLabel>
-            <h2 className="mt-4 font-display text-3xl font-bold text-ink md:text-[40px]">A role built around you.</h2>
+            <h2 className="mt-4 font-display text-3xl font-bold text-ink md:text-[40px]">
+              A role built around you.
+            </h2>
             <p className="mt-5 text-[17px] leading-[1.85] text-mist">{d.intro}</p>
 
-            <p className="mt-8 text-[11px] font-bold uppercase tracking-[0.22em] text-mist/80">Key Benefits</p>
+            <p className="mt-8 text-[11px] font-bold uppercase tracking-[0.22em] text-mist/80">
+              Key Benefits
+            </p>
             <ul className="mt-4 space-y-3">
               {d.benefits.map((b) => (
                 <li key={b} className="flex items-start gap-3 text-[15px] text-ink/90">
@@ -47,7 +51,10 @@ export function OppDetailPage({ d }: { d: OppDetail }) {
               ))}
             </ul>
 
-            <Link to="/contact" className="mt-10 inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-bold text-white transition hover:bg-gold hover:text-navy">
+            <Link
+              to="/contact"
+              className="mt-10 inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-bold text-white transition hover:bg-gold hover:text-navy"
+            >
               Register Now <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
@@ -58,7 +65,9 @@ export function OppDetailPage({ d }: { d: OppDetail }) {
               <ol className="mt-6 space-y-6">
                 {d.steps.map((s, i) => (
                   <li key={s.title} className="flex gap-4">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-sm font-bold text-navy">{i + 1}</span>
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-sm font-bold text-navy">
+                      {i + 1}
+                    </span>
                     <div>
                       <p className="font-display text-lg font-bold text-ink">{s.title}</p>
                       <p className="mt-1 text-sm text-mist">{s.body}</p>

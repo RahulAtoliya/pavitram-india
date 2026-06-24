@@ -7,10 +7,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +36,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -52,7 +48,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="inline-flex items-center justify-center rounded-full bg-navy px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold hover:text-navy"
           >
             Try again
@@ -77,10 +76,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Pavitram India — Intellectual Citizen · Prosperous Family · Self-Reliant Society" },
-      { name: "description", content: "Pavitram India is a cooperative self-reliant community connecting members across daily needs, education, health, real estate and essential services." },
+      {
+        name: "description",
+        content:
+          "Pavitram India is a cooperative self-reliant community connecting members across daily needs, education, health, real estate and essential services.",
+      },
       { name: "author", content: "Pavitram India" },
       { property: "og:title", content: "Pavitram India" },
-      { property: "og:description", content: "A cooperative self-reliant community building Intellectual Citizens, Prosperous Families and a Self-Reliant Society." },
+      {
+        property: "og:description",
+        content:
+          "A cooperative self-reliant community building Intellectual Citizens, Prosperous Families and a Self-Reliant Society.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -107,7 +114,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
         <style>{`
-          /* Hide Lovable badge overlay if present */
+          /* Hide editor badge overlay if present */
           #lovable-badge, [data-lovable-badge], a[href*="lovable.dev"][class*="badge"] { display: none !important; }
         `}</style>
       </head>

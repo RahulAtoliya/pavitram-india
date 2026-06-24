@@ -1,33 +1,80 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, Sprout, Star, Rocket, Handshake, User, Home, Users, Flag, Quote, ArrowRight } from "lucide-react";
+import {
+  ShieldCheck,
+  Sprout,
+  Star,
+  Rocket,
+  Handshake,
+  User,
+  Home,
+  Users,
+  Flag,
+  Quote,
+  ArrowRight,
+} from "lucide-react";
 import { PageHero, Reveal, GoldLabel, FinalCTA } from "@/components/site";
 
 export const Route = createFileRoute("/about/")({
   head: () => ({
     meta: [
       { title: "About Pavitram India — Our Story, Vision & Values" },
-      { name: "description", content: "Pavitram India organizes independent professionals and businesses into a cooperative network rooted in integrity, responsibility, excellence, pioneering and unity." },
+      {
+        name: "description",
+        content:
+          "Pavitram India organizes independent professionals and businesses into a cooperative network rooted in integrity, responsibility, excellence, pioneering and unity.",
+      },
       { property: "og:title", content: "About Pavitram India" },
-      { property: "og:description", content: "Our story, vision, mission, philosophy and five core values." },
+      {
+        property: "og:description",
+        content: "Our story, vision, mission, philosophy and five core values.",
+      },
     ],
   }),
   component: AboutPage,
 });
 
 const TABS = [
-  { id: "vision", label: "Our Vision", body: "We are building a business network where every associate can fulfill their requirements through a self-supporting cooperative ecosystem. Our focus is on developing professional excellence, prosperous partnerships, and a self-reliant economic structure." },
-  { id: "mission", label: "Our Mission", body: "To empower every Indian family by creating a transparent, ethical, and cooperative platform that connects people, businesses, and opportunities — making self-reliance a reality for all, not just a few." },
-  { id: "philosophy", label: "Our Philosophy", body: "We believe in the power of unity, fairness, and shared growth. Our philosophy is rooted in the ancient Indian principle of Vasudhaiva Kutumbakam — the world is one family. Every member contributes, every member benefits." },
+  {
+    id: "vision",
+    label: "Our Vision",
+    body: "We are building a business network where every associate can fulfill their requirements through a self-supporting cooperative ecosystem. Our focus is on developing professional excellence, prosperous partnerships, and a self-reliant economic structure.",
+  },
+  {
+    id: "mission",
+    label: "Our Mission",
+    body: "To empower every Indian family by creating a transparent, ethical, and cooperative platform that connects people, businesses, and opportunities — making self-reliance a reality for all, not just a few.",
+  },
+  {
+    id: "philosophy",
+    label: "Our Philosophy",
+    body: "We believe in the power of unity, fairness, and shared growth. Our philosophy is rooted in the ancient Indian principle of Vasudhaiva Kutumbakam — the world is one family. Every member contributes, every member benefits.",
+  },
 ];
 
 const VALUES = [
-  { icon: ShieldCheck, title: "Integrity", body: "Fair, honest, transparent and ethical in conduct." },
-  { icon: Sprout, title: "Responsibility", body: "Environmental and social principles in all businesses." },
-  { icon: Star, title: "Excellence", body: "Highest standard of qualities, promoting meritocracy." },
+  {
+    icon: ShieldCheck,
+    title: "Integrity",
+    body: "Fair, honest, transparent and ethical in conduct.",
+  },
+  {
+    icon: Sprout,
+    title: "Responsibility",
+    body: "Environmental and social principles in all businesses.",
+  },
+  {
+    icon: Star,
+    title: "Excellence",
+    body: "Highest standard of qualities, promoting meritocracy.",
+  },
   { icon: Rocket, title: "Pioneering", body: "Bold, agile, courageous — innovative solutions." },
-  { icon: Handshake, title: "Unity", body: "Continuous learning, caring and collaborative relationships." },
+  {
+    icon: Handshake,
+    title: "Unity",
+    body: "Continuous learning, caring and collaborative relationships.",
+  },
 ];
 
 const TREE = [
@@ -39,7 +86,7 @@ const TREE = [
 
 function AboutPage() {
   const [tab, setTab] = useState("vision");
-  const active = TABS.find(t => t.id === tab)!;
+  const active = TABS.find((t) => t.id === tab)!;
 
   return (
     <>
@@ -55,9 +102,14 @@ function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <GoldLabel>How It Began</GoldLabel>
-            <h2 className="mt-5 font-display text-3xl font-bold text-ink md:text-[42px]">Our Story</h2>
+            <h2 className="mt-5 font-display text-3xl font-bold text-ink md:text-[42px]">
+              Our Story
+            </h2>
             <p className="mt-6 text-[17px] leading-[1.85] text-mist">
-              Pavitram India began with a clear mission: to organize independent professionals and businesses into a powerful, cooperative network. Our founders recognized that by working together, we could create a more efficient and transparent ecosystem for everyone.
+              Pavitram India began with a clear mission: to organize independent professionals and
+              businesses into a powerful, cooperative network. Our founders recognized that by
+              working together, we could create a more efficient and transparent ecosystem for
+              everyone.
             </p>
             <div className="mt-8 text-2xl text-gold">◆</div>
           </Reveal>
@@ -73,7 +125,12 @@ function AboutPage() {
                     className={`relative pb-4 text-sm font-semibold transition ${tab === t.id ? "text-gold" : "text-white/60 hover:text-white"}`}
                   >
                     {t.label}
-                    {tab === t.id && <motion.span layoutId="aboutTab" className="absolute -bottom-px left-0 right-0 h-0.5 bg-gold" />}
+                    {tab === t.id && (
+                      <motion.span
+                        layoutId="aboutTab"
+                        className="absolute -bottom-px left-0 right-0 h-0.5 bg-gold"
+                      />
+                    )}
                   </button>
                 ))}
               </div>
@@ -95,7 +152,9 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-6">
           <Reveal className="text-center">
             <GoldLabel>Core Values</GoldLabel>
-            <h2 className="mt-5 font-display text-4xl font-bold text-ink md:text-[48px]">Five Core Values</h2>
+            <h2 className="mt-5 font-display text-4xl font-bold text-ink md:text-[48px]">
+              Five Core Values
+            </h2>
           </Reveal>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {VALUES.map((v, i) => (
@@ -116,14 +175,19 @@ function AboutPage() {
 
       {/* Code of conduct banner */}
       <section className="relative isolate overflow-hidden bg-navy py-24 md:py-32">
-        <div className="absolute inset-0 opacity-20" style={{
-          backgroundImage: "radial-gradient(rgba(201,149,42,0.4) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }} />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: "radial-gradient(rgba(201,149,42,0.4) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
         <Reveal className="relative mx-auto max-w-3xl px-6 text-center">
           <Quote className="mx-auto h-10 w-10 text-gold" />
           <p className="mt-6 font-display text-xl italic leading-[1.6] text-white md:text-2xl">
-            "The code of conducts provides an ethical road map and guidelines for our values of integrity, responsibility, excellence, pioneering and unity to protect the interests of all associates."
+            "The code of conducts provides an ethical road map and guidelines for our values of
+            integrity, responsibility, excellence, pioneering and unity to protect the interests of
+            all associates."
           </p>
           <Quote className="mx-auto mt-6 h-10 w-10 rotate-180 text-gold" />
         </Reveal>
@@ -134,7 +198,9 @@ function AboutPage() {
         <div className="mx-auto max-w-3xl px-6">
           <Reveal className="text-center">
             <GoldLabel>Our Structure</GoldLabel>
-            <h2 className="mt-5 font-display text-4xl font-bold text-ink md:text-[48px]">The Pavitram Family Tree</h2>
+            <h2 className="mt-5 font-display text-4xl font-bold text-ink md:text-[48px]">
+              The Pavitram Family Tree
+            </h2>
           </Reveal>
 
           <div className="relative mt-16">
@@ -145,7 +211,9 @@ function AboutPage() {
                     <n.Icon className="h-7 w-7" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-gold">Level {i + 1}</p>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-gold">
+                      Level {i + 1}
+                    </p>
                     <p className="font-display text-2xl font-bold text-ink">{n.label}</p>
                   </div>
                   {i < TREE.length - 1 && (
@@ -163,7 +231,10 @@ function AboutPage() {
           </div>
 
           <Reveal className="mt-14 flex justify-center gap-4">
-            <Link to="/about/vision" className="inline-flex items-center gap-2 rounded-full border-2 border-gold px-6 py-3 text-sm font-bold text-gold transition hover:bg-gold hover:text-navy">
+            <Link
+              to="/about/vision"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-gold px-6 py-3 text-sm font-bold text-gold transition hover:bg-gold hover:text-navy"
+            >
               Explore Our Vision <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>

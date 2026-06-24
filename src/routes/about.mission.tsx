@@ -6,9 +6,16 @@ export const Route = createFileRoute("/about/mission")({
   head: () => ({
     meta: [
       { title: "Our Mission — Pavitram India" },
-      { name: "description", content: "Empowering every Indian family through a transparent, ethical, cooperative platform." },
+      {
+        name: "description",
+        content:
+          "Empowering every Indian family through a transparent, ethical, cooperative platform.",
+      },
       { property: "og:title", content: "Our Mission — Pavitram India" },
-      { property: "og:description", content: "Making self-reliance a reality for all, not just a few." },
+      {
+        property: "og:description",
+        content: "Making self-reliance a reality for all, not just a few.",
+      },
     ],
   }),
   component: MissionPage,
@@ -18,7 +25,11 @@ function MissionPage() {
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: "Home", to: "/" }, { label: "About", to: "/about" }, { label: "Our Mission" }]}
+        breadcrumb={[
+          { label: "Home", to: "/" },
+          { label: "About", to: "/about" },
+          { label: "Our Mission" },
+        ]}
         label="Our Mission"
         title="Empower Every Indian Family"
         hindi="हमारा मिशन"
@@ -29,15 +40,26 @@ function MissionPage() {
           <Reveal>
             <GoldLabel>The Mission</GoldLabel>
             <p className="mt-8 font-display text-2xl leading-[1.6] text-ink md:text-3xl">
-              To empower every Indian family by creating a <span className="text-gold">transparent, ethical, and cooperative platform</span> that connects people, businesses, and opportunities — making self-reliance a reality for all, not just a few.
+              To empower every Indian family by creating a{" "}
+              <span className="text-gold">transparent, ethical, and cooperative platform</span> that
+              connects people, businesses, and opportunities — making self-reliance a reality for
+              all, not just a few.
             </p>
           </Reveal>
 
           <div className="mt-16 grid gap-8 sm:grid-cols-3">
             {[
               { Icon: Heart, title: "Empower", body: "Lift every family with real opportunities." },
-              { Icon: Users, title: "Connect", body: "Bridge people, businesses and capabilities." },
-              { Icon: ShieldCheck, title: "Protect", body: "Operate with transparency and ethics." },
+              {
+                Icon: Users,
+                title: "Connect",
+                body: "Bridge people, businesses and capabilities.",
+              },
+              {
+                Icon: ShieldCheck,
+                title: "Protect",
+                body: "Operate with transparency and ethics.",
+              },
             ].map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08}>
                 <div className="rounded-2xl bg-haze p-6 transition hover:-translate-y-1.5 hover:shadow-lg">
@@ -52,7 +74,10 @@ function MissionPage() {
           </div>
 
           <Reveal className="mt-12 flex gap-4">
-            <Link to="/about/philosophy" className="inline-flex items-center gap-2 text-sm font-semibold text-gold hover:underline">
+            <Link
+              to="/about/philosophy"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-gold hover:underline"
+            >
               Read Our Philosophy <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
