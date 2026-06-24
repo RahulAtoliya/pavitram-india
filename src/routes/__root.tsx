@@ -113,12 +113,39 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                  pageLanguage: 'en',
+                  includedLanguages: 'hi',
+                  autoDisplay: false
+                }, 'google_translate_element');
+              }
+            `,
+          }}
+        />
+        <script
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          async
+          defer
+        />
         <style>{`
           /* Hide editor badge overlay if present */
           #lovable-badge, [data-lovable-badge], a[href*="lovable.dev"][class*="badge"] { display: none !important; }
+          
+          /* Hide Google Translate top bar and elements */
+          .skiptranslate, .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame {
+            display: none !important;
+          }
+          body {
+            top: 0 !important;
+          }
         `}</style>
       </head>
       <body>
+        <div id="google_translate_element" style="display:none"></div>
         {children}
         <Scripts />
       </body>

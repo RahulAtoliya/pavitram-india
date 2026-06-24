@@ -126,7 +126,17 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
+  const [isHindi, setIsHindi] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // Cookie helper to check current translation
+  const getCookie = (name: string) => {
+    if (typeof document === "undefined") return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
+    return null;
+  };
 
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 30);
@@ -139,6 +149,44 @@ export function Navbar() {
     setOpen(false);
     setActive(null);
   }, [pathname]);
+
+  useEffect(() => {
+    const checkLang = () => {
+      const transCookie = getCookie("googtrans");
+      setIsHindi(transCookie === "/en/hi" || transCookie?.includes("/hi") || false);
+    };
+    checkLang();
+    const interval = setInterval(checkLang, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const toggleLanguage = () => {
+    const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
+    if (select) {
+      if (isHindi) {
+        select.value = ""; // Reset to English
+        setIsHindi(false);
+      } else {
+        select.value = "hi";
+        setIsHindi(true);
+      }
+      select.dispatchEvent(new Event("change"));
+    } else {
+      // Fallback: update cookie and reload
+      if (isHindi) {
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie =
+          "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" +
+          window.location.hostname;
+        setIsHindi(false);
+      } else {
+        document.cookie = "googtrans=/en/hi; path=/;";
+        document.cookie = "googtrans=/en/hi; path=/; domain=" + window.location.hostname;
+        setIsHindi(true);
+      }
+      window.location.reload();
+    }
+  };
 
   const isActive = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
 
@@ -268,8 +316,12 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <button className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-sm font-bold text-white/90 transition hover:border-gold hover:text-gold font-deva">
-            हि
+          <button
+            onClick={toggleLanguage}
+            className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-sm font-bold text-white/90 transition hover:border-gold hover:text-gold font-deva cursor-pointer"
+            title={isHindi ? "Translate to English" : "हिन्दी में अनुवाद करें"}
+          >
+            {isHindi ? "EN" : "हि"}
           </button>
           <Link
             to="/contact"
@@ -324,6 +376,15 @@ export function Navbar() {
             <Link to="/contact" className="py-3 text-white/85">
               Contact
             </Link>
+            <button
+              onClick={() => {
+                setOpen(false);
+                toggleLanguage();
+              }}
+              className="py-3 text-left font-bold text-gold cursor-pointer"
+            >
+              {isHindi ? "Translate to English (EN)" : "हिंदी में अनुवाद करें (हि)"}
+            </button>
             <Link
               to="/contact"
               className="mt-3 rounded-full bg-white px-5 py-3 text-center font-bold text-navy"
