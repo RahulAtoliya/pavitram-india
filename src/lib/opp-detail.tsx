@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { type LucideIcon, CheckCircle2, ArrowRight, User, Store, TrendingUp, Briefcase } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { type LucideIcon, CheckCircle2, ArrowRight } from "lucide-react";
 import { PageHero, Reveal, GoldLabel, FinalCTA } from "@/components/site";
 
 export type OppDetail = {
@@ -75,11 +75,3 @@ export function OppDetailPage({ d }: { d: OppDetail }) {
     </>
   );
 }
-
-/* unused placeholder route to satisfy file-routing if loaded; not exported as route */
-export const Route = createFileRoute("/opportunities/_detail" as never)({
-  component: () => null,
-});
-
-// re-exports to avoid unused imports lint
-export const _icons = { User, Store, TrendingUp, Briefcase };
