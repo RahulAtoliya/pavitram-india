@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { User, Store, TrendingUp, Briefcase, ShieldCheck, Zap, Users, Heart, ArrowRight, CheckCircle2 } from "lucide-react";
 import { PageHero, Reveal, GoldLabel, FinalCTA } from "@/components/site";
 
-export const Route = createFileRoute("/opportunities")({
+export const Route = createFileRoute("/opportunities/")({
   head: () => ({
     meta: [
       { title: "Opportunities — Pavitram India" },

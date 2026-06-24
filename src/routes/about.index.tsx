@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Sprout, Star, Rocket, Handshake, User, Home, Users, Flag, Quote, ArrowRight } from "lucide-react";
 import { PageHero, Reveal, GoldLabel, FinalCTA } from "@/components/site";
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/about/")({
   head: () => ({
     meta: [
       { title: "About Pavitram India — Our Story, Vision & Values" },
