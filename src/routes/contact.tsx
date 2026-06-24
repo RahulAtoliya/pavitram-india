@@ -111,7 +111,7 @@ function ContactPage() {
                 {
                   Icon: MapPin,
                   title: "Registered Office",
-                  body: "Pavitram India Corporate HQ\nSector 75, Industrial Estate\nMadhya Pradesh 462001, India",
+                  body: "Pavitram India Corporate HQ\nCAT Square, Rau-CAT Rd\nIndore, Madhya Pradesh 452013, India",
                 },
                 {
                   Icon: Phone,
@@ -268,12 +268,18 @@ function ContactPage() {
         </div>
 
         <div className="mx-auto mt-16 max-w-7xl px-6">
-          <div className="flex h-[220px] flex-col items-center justify-center rounded-2xl bg-[#E8EDF3] text-mist">
-            <MapPin className="h-8 w-8 text-gold" />
-            <p className="mt-3 text-xs font-bold uppercase tracking-widest">
-              Map Embed Placeholder
-            </p>
-            <p className="mt-1 text-sm">Our registered office location</p>
+          <div className="overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-[0_12px_40px_-12px_rgba(13,27,62,0.12)]">
+            <iframe
+              src="https://maps.google.com/maps?q=CAT%20Square%2C%20Rau-CAT%20Rd%2C%20Indore%2C%20Madhya%20Pradesh%20452013&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="380"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Pavitram India Registered Office Location - CAT Square, Indore"
+              className="w-full block"
+            />
           </div>
         </div>
       </section>
