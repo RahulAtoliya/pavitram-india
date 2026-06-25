@@ -13,6 +13,7 @@ import {
   Flag,
   Quote,
   ArrowRight,
+  Check,
 } from "lucide-react";
 import { PageHero, Reveal, GoldLabel, FinalCTA } from "@/components/site";
 
@@ -39,17 +40,41 @@ const TABS = [
   {
     id: "vision",
     label: "Our Vision",
-    body: "We are building a business network where every associate can fulfill their requirements through a self-supporting cooperative ecosystem. Our focus is on developing professional excellence, prosperous partnerships, and a self-reliant economic structure.",
+    title: "Our Vision",
+    hindi: "हमारी दृष्टि",
+    body: "We are building a self-reliant cooperative ecosystem where every member — from the humblest village family to the ambitious urban entrepreneur — can fulfill all their needs through the strength of the community itself.",
+    items: [
+      "Intellectual Citizen — प्रबुद्ध नागरिक",
+      "Prosperous Family — समृद्ध परिवार",
+      "Self-Reliant Society — आत्म निर्भर समाज",
+      "Developed India — विकसित भारत",
+    ],
   },
   {
     id: "mission",
     label: "Our Mission",
-    body: "To empower every Indian family by creating a transparent, ethical, and cooperative platform that connects people, businesses, and opportunities — making self-reliance a reality for all, not just a few.",
+    title: "Our Mission",
+    hindi: "हमारा मिशन",
+    body: "To build a transparent, ethical, and inclusive cooperative platform that empowers every Indian through collective action, shared resources, and mutual growth.",
+    items: [
+      "Sabka Saath — सबका साथ",
+      "Sabka Prayaas — सबका प्रयास",
+      "Sabka Vikas — सबका विकास",
+      "Sabka Vishwas — सबका विश्वास",
+    ],
   },
   {
     id: "philosophy",
     label: "Our Philosophy",
-    body: "We believe in the power of unity, fairness, and shared growth. Our philosophy is rooted in the ancient Indian principle of Vasudhaiva Kutumbakam — the world is one family. Every member contributes, every member benefits.",
+    title: "Our Philosophy",
+    hindi: "हमारा दर्शन",
+    body: "Rooted in timeless Indian values and guided by principles that place people above profit, our philosophy shapes every decision, every partnership, and every service we offer.",
+    items: [
+      "Akhanda — अखंडता (Integrity)",
+      "Paardarsita — पारदर्शिता (Transparency)",
+      "Navaachar — नवाचार (Innovation)",
+      "Gathbandhan — गठबंधन (Collaboration)",
+    ],
   },
 ];
 
@@ -134,14 +159,26 @@ function AboutPage() {
                   </button>
                 ))}
               </div>
-              <motion.p
+              <motion.div
                 key={active.id}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-6 text-[15px] leading-[1.85] text-white/80"
+                className="mt-6 space-y-4 text-left"
               >
-                {active.body}
-              </motion.p>
+                <h3 className="font-display text-2xl font-bold text-white">{active.title}</h3>
+                <p className="font-deva text-base font-semibold text-gold">{active.hindi}</p>
+                <p className="text-[15px] leading-[1.85] text-white/80">{active.body}</p>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {active.items.map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-sm text-white/90">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </Reveal>
         </div>

@@ -54,7 +54,7 @@ const SERVICES = [
   },
   {
     Icon: BookOpen,
-    name: "Pavitram Shiksha",
+    name: "Pavitram Gyan",
     body: "Awareness, skill development and equal education access for all.",
   },
   {
@@ -69,12 +69,12 @@ const SERVICES = [
   },
   {
     Icon: Heart,
-    name: "Pavitram Matrimonial",
+    name: "Pavitram Rishta",
     body: "Trusted matchmaking within an ethical community network.",
   },
   {
     Icon: Briefcase,
-    name: "Pavitram Naukari",
+    name: "Pavitram Rozgar",
     body: "Dignified employment matched to qualifications and interest.",
   },
   {

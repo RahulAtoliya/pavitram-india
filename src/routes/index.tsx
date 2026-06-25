@@ -48,6 +48,13 @@ import {
   Youtube,
   Twitter,
   Sparkles,
+  Zap,
+  Shield,
+  Eye,
+  Lightbulb,
+  Link2,
+  Map,
+  Network as NetworkIcon,
 } from "lucide-react";
 import LOGO_URL from "@/assets/pavitram-logo.jpg";
 
@@ -518,27 +525,420 @@ function Pillars() {
   );
 }
 
-/* ─────────── Values Marquee ─────────── */
+/* ─────────── Mission ─────────── */
 
-function ValuesBanner() {
-  const hindi = "अखंडता · पारदर्शिता · नवाचार · सहयोग";
-  const eng = "INTEGRITY · TRANSPARENCY · INNOVATION · COLLABORATION";
+function Mission() {
+  const cards = [
+    {
+      num: "01",
+      icon: Handshake,
+      title: "Sabka Saath",
+      hi: "सबका साथ",
+      body: "Building a united community where every member stands together, supports each other, and grows as one cooperative family across India.",
+    },
+    {
+      num: "02",
+      icon: Zap,
+      title: "Sabka Prayaas",
+      hi: "सबका प्रयास",
+      body: "Encouraging every individual to contribute their skills, time, and efforts toward building a stronger, self-reliant, and prosperous society.",
+    },
+    {
+      num: "03",
+      icon: TrendingUp,
+      title: "Sabka Vikas",
+      hi: "सबका विकास",
+      body: "Ensuring inclusive development where growth reaches every village, every family, and every citizen — leaving no one behind in our nation's progress.",
+    },
+    {
+      num: "04",
+      icon: Shield,
+      title: "Sabka Vishwas",
+      hi: "सबका विश्वास",
+      body: "Earning and maintaining the complete trust of every member through absolute transparency, integrity, and ethical governance at every level.",
+    },
+  ];
+
   return (
-    <section className="relative isolate overflow-hidden bg-navy py-16">
+    <section className="relative isolate overflow-hidden bg-navy py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <GoldLabel>OUR MISSION</GoldLabel>
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-white md:text-[48px]">
+            Our Mission
+          </h2>
+          <p className="mt-3 font-deva text-lg font-semibold text-gold">हमारा मिशन</p>
+          <div className="mx-auto mt-6 h-0.5 w-20 bg-gold" />
+        </Reveal>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+        >
+          {cards.map((c, i) => (
+            <motion.div
+              key={c.title}
+              variants={fadeUp}
+              whileHover={{ y: -6, boxShadow: "0 0 25px rgba(201, 149, 42, 0.25)" }}
+              transition={{ duration: 0.3 }}
+              className="group relative overflow-hidden rounded-[20px] border border-gold/30 bg-white/5 p-7 backdrop-blur-md transition-all duration-300"
+            >
+              <div className="flex justify-between items-start">
+                <span className="font-display text-4xl font-bold text-gold/30 transition-colors group-hover:text-gold/60">
+                  {c.num}
+                </span>
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-gold/10 text-gold">
+                  <c.icon className="h-6 w-6" />
+                </div>
+              </div>
+              <h3 className="mt-6 font-display text-2xl font-bold text-white">{c.title}</h3>
+              <p className="mt-1 font-deva text-base font-semibold text-gold">{c.hi}</p>
+              <p className="mt-3 text-[15px] leading-[1.7] text-white/70">{c.body}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────── Philosophy ─────────── */
+
+function Philosophy() {
+  const cards = [
+    {
+      icon: ShieldCheck,
+      title: "Akhanda — Integrity",
+      hi: "अखंडता",
+      body: "We conduct ourselves with complete honesty, fairness, and ethical principles in every interaction, decision, and partnership within our cooperative network.",
+    },
+    {
+      icon: Eye,
+      title: "Paardarsita — Transparency",
+      hi: "पारदर्शिता",
+      body: "Every process, transaction, and decision in our network is open and visible to all members. We believe transparency builds the trust that holds our community together.",
+    },
+    {
+      icon: Lightbulb,
+      title: "Navaachar — Innovation",
+      hi: "नवाचार",
+      body: "We continuously embrace new ideas, technologies, and approaches to solve real problems and create better opportunities for our members and society.",
+    },
+    {
+      icon: Link2,
+      title: "Gathbandhan — Collaboration",
+      hi: "गठबंधन",
+      body: "Our strength lies in unity. By forging meaningful partnerships between individuals, businesses, and organizations, we create an ecosystem far stronger than the sum of its parts.",
+    },
+  ];
+
+  return (
+    <section className="bg-white py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <GoldLabel>OUR PHILOSOPHY</GoldLabel>
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-ink md:text-[48px]">
+            Our Philosophy
+          </h2>
+          <p className="mt-3 font-deva text-lg font-semibold text-gold">हमारा दर्शन</p>
+          <div className="mx-auto mt-6 h-0.5 w-20 bg-gold" />
+        </Reveal>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="mt-16 grid gap-6 md:grid-cols-2 lg:px-12"
+        >
+          {cards.map((c) => (
+            <motion.div
+              key={c.title}
+              variants={fadeUp}
+              whileHover={{ y: -6, borderTopColor: "#C9952A" }}
+              transition={{ duration: 0.3 }}
+              className="group relative overflow-hidden rounded-[20px] bg-white p-8 card-shadow border-t-3 border-transparent transition-all duration-300 flex gap-6"
+            >
+              {/* Left gold accent line */}
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gold/40 group-hover:bg-gold" />
+
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-navy text-gold ring-2 ring-gold/20">
+                <c.icon className="h-5 w-5" />
+              </div>
+
+              <div className="text-left">
+                <h3 className="font-display text-2xl font-bold text-ink transition-colors group-hover:text-gold">
+                  {c.title}
+                </h3>
+                <p className="mt-1 font-deva text-base font-semibold text-gold">{c.hi}</p>
+                <p className="mt-3 text-[15px] leading-[1.7] text-mist">{c.body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────── Journey Strip ─────────── */
+
+function JourneyStrip() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  const nodes = [
+    { emoji: "🏡", en: "Villages", hi: "गांव" },
+    { emoji: "🏙️", en: "Cities", hi: "शहर" },
+    { emoji: "🗺️", en: "States", hi: "प्रदेश" },
+    { emoji: "🇮🇳", en: "Nation", hi: "देश" },
+  ];
+
+  return (
+    <div ref={ref} className="relative mt-20 max-w-4xl mx-auto px-4">
+      {/* SVG Connecting Line */}
+      <div className="absolute top-10 left-8 right-8 h-1 -translate-y-1/2 z-0 hidden md:block">
+        <svg className="w-full h-full" fill="none">
+          <line
+            x1="0"
+            y1="2"
+            x2="100%"
+            y2="2"
+            stroke="rgba(201, 149, 42, 0.15)"
+            strokeWidth="3"
+            strokeDasharray="6 6"
+          />
+          <motion.line
+            x1="0"
+            y1="2"
+            x2="100%"
+            y2="2"
+            stroke="#C9952A"
+            strokeWidth="3"
+            initial={{ pathLength: 0 }}
+            animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
+            transition={{ duration: 1.8, ease: "easeInOut" }}
+          />
+        </svg>
+      </div>
+
+      {/* Nodes */}
+      <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0">
+        {nodes.map((n, i) => (
+          <div key={n.en} className="flex flex-col items-center text-center">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+              transition={{ delay: i * 0.3, duration: 0.5 }}
+              className="grid h-20 w-20 place-items-center rounded-full bg-navy border-2 border-gold ring-4 ring-gold/15 shadow-[0_0_20px_rgba(201, 149, 42, 0.3)] text-3xl"
+            >
+              {n.emoji}
+            </motion.div>
+            <span className="mt-4 text-sm font-bold uppercase tracking-wider text-white">
+              {n.en}
+            </span>
+            <span className="mt-1 font-deva text-xs font-semibold text-gold">{n.hi}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ─────────── Presence ─────────── */
+
+function Presence() {
+  const cards = [
+    {
+      icon: Home,
+      num: 5000,
+      suffix: "+",
+      label: "Villages",
+      hi: "गांव",
+      body: "Active community members in rural villages across India",
+    },
+    {
+      icon: Building2,
+      num: 200,
+      suffix: "+",
+      label: "Cities",
+      hi: "शहर",
+      body: "Urban business associates and cooperative networks",
+    },
+    {
+      icon: Map,
+      num: 15,
+      suffix: "+",
+      label: "States",
+      hi: "प्रदेश",
+      body: "States covered with active Pavitram India operations",
+    },
+    {
+      icon: Flag,
+      num: 1,
+      suffix: "",
+      label: "Nation",
+      hi: "देश",
+      body: "One united cooperative movement building a developed India",
+    },
+  ];
+
+  return (
+    <section className="relative isolate overflow-hidden bg-navy py-24 md:py-32">
+      {/* dot grid */}
       <div
-        className="absolute inset-0 opacity-[0.07]"
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage: "radial-gradient(circle, white 1px, transparent 1.5px)",
           backgroundSize: "28px 28px",
         }}
       />
-      <div className="relative mx-auto max-w-6xl px-6 text-center">
-        <div className="mx-auto h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent" />
-        <p className="mt-6 font-deva text-2xl font-semibold text-gold md:text-[26px]">{hindi}</p>
-        <p className="mt-3 text-[13px] font-semibold uppercase tracking-[0.32em] text-white md:text-[15px]">
-          {eng}
-        </p>
-        <div className="mx-auto mt-6 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent" />
+
+      <div className="mx-auto max-w-7xl px-6">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <GoldLabel>OUR PRESENCE</GoldLabel>
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-white md:text-[48px]">
+            Our Presence Across India
+          </h2>
+          <p className="mt-3 font-deva text-lg font-semibold text-gold">हमारी उपस्थिति</p>
+          <p className="mx-auto mt-6 max-w-xl text-white/70">
+            From the smallest village to the heart of the nation — Pavitram India is building a
+            connected, self-reliant community at every level of society.
+          </p>
+          <div className="mx-auto mt-6 h-0.5 w-20 bg-gold" />
+        </Reveal>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+        >
+          {cards.map((c) => (
+            <motion.div
+              key={c.label}
+              variants={fadeUp}
+              whileHover={{ y: -6, boxShadow: "0 0 25px rgba(201, 149, 42, 0.25)" }}
+              transition={{ duration: 0.3 }}
+              className="group relative overflow-hidden rounded-[20px] border border-gold/30 bg-white/5 p-7 backdrop-blur-md transition-all duration-300"
+            >
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-gold/10 text-gold">
+                <c.icon className="h-6 w-6" />
+              </div>
+              <div className="mt-6 font-display text-4xl md:text-5xl font-bold text-gold">
+                <CountUp to={c.num} suffix={c.suffix} />
+              </div>
+              <h3 className="mt-2 font-display text-lg font-bold text-white uppercase tracking-wider">
+                {c.label}
+              </h3>
+              <p className="mt-0.5 font-deva text-sm font-semibold text-gold">{c.hi}</p>
+              <p className="mt-3 text-[13px] leading-[1.6] text-white/60">{c.body}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <JourneyStrip />
+      </div>
+    </section>
+  );
+}
+
+/* ─────────── Association With ─────────── */
+
+function AssociationWith() {
+  const cards = [
+    {
+      icon: Landmark,
+      title: "With Government",
+      hi: "सरकार के साथ",
+      body: "Aligning with government policies, schemes, and initiatives to bring their benefits directly to our community members across India.",
+      tag: "Government Policies & Schemes",
+    },
+    {
+      icon: Briefcase,
+      title: "With Govt Departments",
+      hi: "सरकारी विभागों के साथ",
+      body: "Partnering with government departments for effective on-ground implementation of welfare schemes and development programs.",
+      tag: "Implementation Partner",
+    },
+    {
+      icon: Users,
+      title: "With Beneficiaries",
+      hi: "लाभार्थियों के साथ",
+      body: "Directly connecting with and empowering the real beneficiaries — families, farmers, workers, and entrepreneurs — who need support.",
+      tag: "लाभार्थी / हितग्राही",
+    },
+    {
+      icon: NetworkIcon,
+      title: "With Organizations",
+      hi: "संगठनों के साथ",
+      body: "Collaborating with NGOs, cooperatives, professional bodies, and community organizations to strengthen our nationwide network.",
+      tag: "संगठन",
+    },
+  ];
+
+  return (
+    <section className="bg-white py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <GoldLabel>ASSOCIATION WITH</GoldLabel>
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-ink md:text-[48px]">
+            Who We Work With
+          </h2>
+          <p className="mt-3 font-deva text-lg font-semibold text-gold">हमारे सहयोगी</p>
+          <p className="mx-auto mt-6 max-w-xl text-mist">
+            Pavitram India builds powerful associations at every level — from government bodies to
+            grassroots organizations — to create maximum impact for our members.
+          </p>
+          <div className="mx-auto mt-6 h-0.5 w-20 bg-gold" />
+        </Reveal>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+        >
+          {cards.map((c) => (
+            <motion.div
+              key={c.title}
+              variants={fadeUp}
+              whileHover={{ y: -6, borderColor: "#C9952A" }}
+              transition={{ duration: 0.3 }}
+              className="group flex flex-col justify-between rounded-[20px] border border-transparent bg-white p-7 card-shadow transition-all duration-300"
+            >
+              <div className="text-left">
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-navy text-gold ring-2 ring-gold/20 transition-colors group-hover:bg-gold group-hover:text-navy">
+                  <c.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-6 font-display text-xl font-bold text-ink transition-colors group-hover:text-gold">
+                  {c.title}
+                </h3>
+                <p className="mt-1 font-deva text-sm font-semibold text-gold">{c.hi}</p>
+                <p className="mt-3 text-sm leading-[1.7] text-mist">{c.body}</p>
+              </div>
+              <div className="mt-6 border-t border-haze pt-4 text-left">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gold">
+                  {c.tag}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <Reveal className="mt-14 flex justify-center">
+          <a
+            href="#join"
+            className="inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-bold text-white transition hover:bg-gold hover:text-navy hover:scale-[1.03]"
+          >
+            Join Pavitram India <ArrowRight className="h-4 w-4" />
+          </a>
+        </Reveal>
       </div>
     </section>
   );
@@ -562,7 +962,7 @@ function Services() {
     { icon: HeartPulse, title: "Pavitram Wellness", text: "Healthy body, mind, and wealth" },
     {
       icon: BookOpen,
-      title: "Pavitram Shiksha",
+      title: "Pavitram Gyan",
       text: "Awareness, skill development, and education for all, equal education",
     },
     {
@@ -571,10 +971,10 @@ function Services() {
       text: "Banking, loans, investment, and insurance",
     },
     { icon: Plane, title: "Pavitram Travels", text: "Complete solution for tour and travel needs" },
-    { icon: Heart, title: "Pavitra Bandhan", text: "Complete solution for matrimonial needs" },
+    { icon: Heart, title: "Pavitram Rishta", text: "Complete solution for matrimonial needs" },
     {
       icon: Briefcase,
-      title: "Pavitra Rozgar",
+      title: "Pavitram Rozgar",
       text: "Employment and business according to qualification, ability, and interest",
     },
     {
@@ -584,6 +984,11 @@ function Services() {
     },
     { icon: Radio, title: "Pavitram Media", text: "Electronic and social media, e-paper" },
     { icon: Truck, title: "Pavitram Delivery", text: "Anything, anywhere, anytime" },
+    {
+      icon: Heart,
+      title: "Pavitram Foundation",
+      text: "Social welfare, community development, and charitable initiatives",
+    },
   ];
   return (
     <section id="services" className="bg-haze py-24 md:py-32">
@@ -598,7 +1003,7 @@ function Services() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          className="mt-14 grid gap-5 grid-cols-[repeat(auto-fit,minmax(220px,1fr))]"
         >
           {items.map((s) => (
             <motion.div
@@ -822,60 +1227,6 @@ function Network() {
   );
 }
 
-/* ─────────── Collaborators ─────────── */
-
-function Collaborators() {
-  const items = [
-    { icon: Building, title: "Government Policies & Schemes", hi: "सरकार की नीति एवं योजनाएं" },
-    {
-      icon: CheckCircle2,
-      title: "Implementation of Govt Schemes",
-      hi: "शासकीय योजनाओं का इंप्लीमेंटेशन",
-    },
-    { icon: UsersRound, title: "Beneficiaries", hi: "लाभार्थी / हितग्राही" },
-    { icon: Handshake, title: "Organization", hi: "संगठन" },
-  ];
-  return (
-    <section className="bg-haze py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <SectionHeader label="Our Network" title="Collaborators & Partners" />
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
-          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {items.map((it) => (
-            <motion.div
-              key={it.title}
-              variants={fadeUp}
-              whileHover={{ y: -6 }}
-              className="group rounded-[20px] bg-white p-7 card-shadow transition hover:card-shadow-lg"
-            >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-haze text-mist transition group-hover:bg-gold group-hover:text-white">
-                <it.icon className="h-6 w-6" />
-              </div>
-              <h3 className="mt-5 font-display text-lg font-bold text-ink leading-snug">
-                {it.title}
-              </h3>
-              <p className="mt-2 font-deva text-sm font-semibold text-gold">{it.hi}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-        <Reveal className="mt-14 flex justify-center">
-          <a
-            href="#join"
-            className="inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-bold text-white transition hover:bg-gold hover:scale-[1.03]"
-          >
-            Join Pavitram India <ArrowRight className="h-4 w-4" />
-          </a>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 /* ─────────── Testimonials ─────────── */
 
 function Testimonials() {
@@ -1033,14 +1384,15 @@ function Footer() {
     "Pavitram Mart",
     "Pavitram Properties",
     "Pavitram Wellness",
-    "Pavitram Shiksha",
+    "Pavitram Gyan",
     "Pavitram Finance",
     "Pavitram Travels",
-    "Pavitram Matrimonial",
-    "Pavitram Naukari",
+    "Pavitram Rishta",
+    "Pavitram Rozgar",
     "Pavitram Services",
     "Pavitram Media",
     "Pavitram Delivery",
+    "Pavitram Foundation",
   ];
   const socials = [MessageCircle, Facebook, Instagram, Youtube, Twitter];
 
@@ -1123,12 +1475,14 @@ function Index() {
     <>
       <Hero />
       <Stats />
-      <Pillars />
-      <ValuesBanner />
-      <Services />
-      <Opportunities />
+      <Pillars /> {/* Section A: Our Vision */}
+      <Mission /> {/* Section B: Our Mission */}
+      <Philosophy /> {/* Section C: Our Philosophy */}
+      <Presence /> {/* Section D: Our Presence */}
+      <Opportunities /> {/* Section E: Opportunities */}
+      <AssociationWith /> {/* Section F: Association With */}
+      <Services /> {/* Section G: Our Working Areas / Core Services */}
       <Network />
-      <Collaborators />
       <Testimonials />
       <CTABanner />
       <FinalCTA />

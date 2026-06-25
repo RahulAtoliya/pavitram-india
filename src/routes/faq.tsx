@@ -37,7 +37,7 @@ const FAQS: { cat: Category; q: string; a: string }[] = [
   {
     cat: "About Pavitram",
     q: "How does the community financially support its members?",
-    a: "Members benefit through reduced expenses via cooperative purchasing, income opportunities through the business network, investment returns of 12%+ through the cooperative model, and access to employment through Pavitra Rozgar.",
+    a: "Members benefit through reduced expenses via cooperative purchasing, income opportunities through the business network, investment returns of 12%+ through the cooperative model, and access to employment through Pavitram Rozgar.",
   },
   {
     cat: "Opportunities & Network",
@@ -66,13 +66,13 @@ const FAQS: { cat: Category; q: string; a: string }[] = [
   },
   {
     cat: "Services",
-    q: "What is Pavitram Shiksha?",
-    a: "Pavitram Shiksha is the education arm focused on awareness, skill development, and equal education access for all community members, regardless of background.",
+    q: "What is Pavitram Gyan?",
+    a: "Pavitram Gyan is the education arm focused on awareness, skill development, and equal education access for all community members, regardless of background.",
   },
   {
     cat: "Services",
-    q: "What is Pavitra Rozgar?",
-    a: "Pavitra Rozgar connects job seekers with dignified employment and business opportunities that match their qualifications, abilities, and personal interests within the cooperative network.",
+    q: "What is Pavitram Rozgar?",
+    a: "Pavitram Rozgar connects job seekers with dignified employment and business opportunities that match their qualifications, abilities, and personal interests within the cooperative network.",
   },
 ];
 

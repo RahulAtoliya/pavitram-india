@@ -24,7 +24,7 @@ export const Route = createFileRoute("/opportunities/career")({
         label: "Career",
         Icon: Briefcase,
         intro:
-          "Connect with dignified and organized employment opportunities tailored perfectly to your qualifications and skills. Pavitra Rozgar pairs talent with the right roles inside a values-driven network.",
+          "Connect with dignified and organized employment opportunities tailored perfectly to your qualifications and skills. Pavitram Rozgar pairs talent with the right roles inside a values-driven network.",
         benefits: [
           "Employment according to qualification and interest",
           "Dignified and organized work culture",

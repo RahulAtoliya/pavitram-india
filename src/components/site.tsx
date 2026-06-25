@@ -116,10 +116,11 @@ const OPP_ITEMS = [
 const SERVICES_GRID: [string, string][] = [
   ["Pavitram Technology", "Pavitram Mart"],
   ["Pavitram Properties", "Pavitram Wellness"],
-  ["Pavitram Shiksha", "Pavitram Finance"],
-  ["Pavitram Travels", "Pavitram Matrimonial"],
-  ["Pavitram Naukari", "Pavitram Services"],
+  ["Pavitram Gyan", "Pavitram Finance"],
+  ["Pavitram Travels", "Pavitram Rishta"],
+  ["Pavitram Rozgar", "Pavitram Services"],
   ["Pavitram Media", "Pavitram Delivery"],
+  ["Pavitram Foundation", ""],
 ];
 
 export function Navbar() {
@@ -332,11 +333,13 @@ export function Navbar() {
             {dropdownPanel(
               "services",
               <div className="grid w-[520px] grid-cols-2 gap-1">
-                {SERVICES_GRID.flat().map((s) => (
-                  <Link key={s} to="/services" className={linkCls}>
-                    {s}
-                  </Link>
-                ))}
+                {SERVICES_GRID.flat()
+                  .filter(Boolean)
+                  .map((s) => (
+                    <Link key={s} to="/services" className={linkCls}>
+                      {s}
+                    </Link>
+                  ))}
               </div>,
             )}
           </div>
@@ -602,7 +605,7 @@ export function Footer() {
     { label: "FAQ", to: "/faq" },
     { label: "Contact", to: "/contact" },
   ];
-  const services = SERVICES_GRID.flat();
+  const services = SERVICES_GRID.flat().filter(Boolean);
   const socials = [MessageCircle, Facebook, Instagram, Youtube, Twitter];
 
   return (
