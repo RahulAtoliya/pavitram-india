@@ -521,8 +521,8 @@ function Pillars() {
 /* ─────────── Values Marquee ─────────── */
 
 function ValuesBanner() {
-  const hindi = "अखंडता · पारदर्शिता · उत्कृष्टता · नवाचार · सहयोग";
-  const eng = "INTEGRITY · TRANSPARENCY · EXCELLENCE · INNOVATION · COLLABORATION";
+  const hindi = "अखंडता · पारदर्शिता · नवाचार · सहयोग";
+  const eng = "INTEGRITY · TRANSPARENCY · INNOVATION · COLLABORATION";
   return (
     <section className="relative isolate overflow-hidden bg-navy py-16">
       <div
