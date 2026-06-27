@@ -684,7 +684,31 @@ function Philosophy() {
   );
 }
 
-/* ─────────── Journey Strip ─────────── */
+function IndiaFlagIcon() {
+  return (
+    <svg viewBox="0 0 900 600" className="h-9 w-9 rounded-sm shadow-md overflow-hidden">
+      <rect width="900" height="200" fill="#FF9933" />
+      <rect y="200" width="900" height="200" fill="#FFFFFF" />
+      <rect y="400" width="900" height="200" fill="#138808" />
+      <g transform="translate(450, 300)">
+        <circle r="90" fill="none" stroke="#000080" strokeWidth="16" />
+        <circle r="18" fill="#000080" />
+        {[...Array(24)].map((_, i) => (
+          <line
+            key={i}
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="-90"
+            stroke="#000080"
+            strokeWidth="7"
+            transform={`rotate(${i * 15})`}
+          />
+        ))}
+      </g>
+    </svg>
+  );
+}
 
 function JourneyStrip() {
   const ref = useRef<HTMLDivElement>(null);
@@ -694,7 +718,7 @@ function JourneyStrip() {
     { emoji: "🏡", en: "Villages", hi: "गांव" },
     { emoji: "🏙️", en: "Cities", hi: "शहर" },
     { emoji: "🗺️", en: "States", hi: "प्रदेश" },
-    { emoji: "🇮🇳", en: "Nation", hi: "देश" },
+    { customIcon: <IndiaFlagIcon />, en: "Nation", hi: "देश" },
   ];
 
   return (
@@ -733,9 +757,9 @@ function JourneyStrip() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
               transition={{ delay: i * 0.3, duration: 0.5 }}
-              className="grid h-20 w-20 place-items-center rounded-full bg-navy border-2 border-gold ring-4 ring-gold/15 shadow-[0_0_20px_rgba(201, 149, 42, 0.3)] text-3xl"
+              className="grid h-20 w-20 place-items-center rounded-full bg-navy border-2 border-gold ring-4 ring-gold/15 shadow-[0_0_20px_rgba(201, 149, 42, 0.3)] text-3xl overflow-hidden"
             >
-              {n.emoji}
+              {n.customIcon ? n.customIcon : n.emoji}
             </motion.div>
             <span className="mt-4 text-sm font-bold uppercase tracking-wider text-white">
               {n.en}
