@@ -652,24 +652,24 @@ function Philosophy() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="mt-16 grid gap-6 md:grid-cols-2 lg:px-12"
+          className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
         >
           {cards.map((c) => (
             <motion.div
               key={c.title}
               variants={fadeUp}
-              whileHover={{ y: -6, borderTopColor: "#C9952A" }}
+              whileHover={{ y: -6 }}
               transition={{ duration: 0.3 }}
-              className="group relative overflow-hidden rounded-[20px] bg-white p-8 card-shadow border-t-3 border-transparent transition-all duration-300 flex gap-6"
+              className="group relative overflow-hidden rounded-[20px] bg-white p-7 card-shadow transition-all duration-300 flex flex-col"
             >
-              {/* Left gold accent line */}
-              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gold/40 group-hover:bg-gold" />
+              {/* Top gold accent line */}
+              <div className="absolute inset-x-0 top-0 h-[3px] bg-gold/40 transition-colors group-hover:bg-gold" />
 
               <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-navy text-gold ring-2 ring-gold/20">
                 <c.icon className="h-5 w-5" />
               </div>
 
-              <div className="text-left">
+              <div className="mt-6 text-left">
                 <h3 className="font-display text-2xl font-bold text-ink transition-colors group-hover:text-gold">
                   {c.title}
                 </h3>
