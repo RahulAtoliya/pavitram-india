@@ -9,10 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as OpportunitiesIndexRouteImport } from './routes/opportunities.index'
 import { Route as AboutIndexRouteImport } from './routes/about.index'
 import { Route as ServicesWellnessRouteImport } from './routes/services.wellness'
@@ -37,11 +37,6 @@ import { Route as AboutPhilosophyRouteImport } from './routes/about.philosophy'
 import { Route as AboutNetworkRouteImport } from './routes/about.network'
 import { Route as AboutMissionRouteImport } from './routes/about.mission'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -57,6 +52,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OpportunitiesIndexRoute = OpportunitiesIndexRouteImport.update({
   id: '/opportunities/',
   path: '/opportunities/',
@@ -68,69 +68,69 @@ const AboutIndexRoute = AboutIndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesWellnessRoute = ServicesWellnessRouteImport.update({
-  id: '/wellness',
-  path: '/wellness',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/wellness',
+  path: '/services/wellness',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesTravelsRoute = ServicesTravelsRouteImport.update({
-  id: '/travels',
-  path: '/travels',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/travels',
+  path: '/services/travels',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesTechnologyRoute = ServicesTechnologyRouteImport.update({
-  id: '/technology',
-  path: '/technology',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/technology',
+  path: '/services/technology',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesServicesRoute = ServicesServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/services',
+  path: '/services/services',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRozgarRoute = ServicesRozgarRouteImport.update({
-  id: '/rozgar',
-  path: '/rozgar',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/rozgar',
+  path: '/services/rozgar',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRishtaRoute = ServicesRishtaRouteImport.update({
-  id: '/rishta',
-  path: '/rishta',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/rishta',
+  path: '/services/rishta',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesPropertiesRoute = ServicesPropertiesRouteImport.update({
-  id: '/properties',
-  path: '/properties',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/properties',
+  path: '/services/properties',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesMediaRoute = ServicesMediaRouteImport.update({
-  id: '/media',
-  path: '/media',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/media',
+  path: '/services/media',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesMartRoute = ServicesMartRouteImport.update({
-  id: '/mart',
-  path: '/mart',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/mart',
+  path: '/services/mart',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesGyanRoute = ServicesGyanRouteImport.update({
-  id: '/gyan',
-  path: '/gyan',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/gyan',
+  path: '/services/gyan',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesFoundationRoute = ServicesFoundationRouteImport.update({
-  id: '/foundation',
-  path: '/foundation',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/foundation',
+  path: '/services/foundation',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesFinanceRoute = ServicesFinanceRouteImport.update({
-  id: '/finance',
-  path: '/finance',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/finance',
+  path: '/services/finance',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesDeliveryRoute = ServicesDeliveryRouteImport.update({
-  id: '/delivery',
-  path: '/delivery',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/delivery',
+  path: '/services/delivery',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const OpportunitiesMerchantRoute = OpportunitiesMerchantRouteImport.update({
   id: '/opportunities/merchant',
@@ -177,7 +177,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/services': typeof ServicesRouteWithChildren
   '/about/mission': typeof AboutMissionRoute
   '/about/network': typeof AboutNetworkRoute
   '/about/philosophy': typeof AboutPhilosophyRoute
@@ -201,12 +200,12 @@ export interface FileRoutesByFullPath {
   '/services/wellness': typeof ServicesWellnessRoute
   '/about/': typeof AboutIndexRoute
   '/opportunities/': typeof OpportunitiesIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/services': typeof ServicesRouteWithChildren
   '/about/mission': typeof AboutMissionRoute
   '/about/network': typeof AboutNetworkRoute
   '/about/philosophy': typeof AboutPhilosophyRoute
@@ -230,13 +229,13 @@ export interface FileRoutesByTo {
   '/services/wellness': typeof ServicesWellnessRoute
   '/about': typeof AboutIndexRoute
   '/opportunities': typeof OpportunitiesIndexRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/services': typeof ServicesRouteWithChildren
   '/about/mission': typeof AboutMissionRoute
   '/about/network': typeof AboutNetworkRoute
   '/about/philosophy': typeof AboutPhilosophyRoute
@@ -260,6 +259,7 @@ export interface FileRoutesById {
   '/services/wellness': typeof ServicesWellnessRoute
   '/about/': typeof AboutIndexRoute
   '/opportunities/': typeof OpportunitiesIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -267,7 +267,6 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/faq'
-    | '/services'
     | '/about/mission'
     | '/about/network'
     | '/about/philosophy'
@@ -291,12 +290,12 @@ export interface FileRouteTypes {
     | '/services/wellness'
     | '/about/'
     | '/opportunities/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contact'
     | '/faq'
-    | '/services'
     | '/about/mission'
     | '/about/network'
     | '/about/philosophy'
@@ -320,12 +319,12 @@ export interface FileRouteTypes {
     | '/services/wellness'
     | '/about'
     | '/opportunities'
+    | '/services'
   id:
     | '__root__'
     | '/'
     | '/contact'
     | '/faq'
-    | '/services'
     | '/about/mission'
     | '/about/network'
     | '/about/philosophy'
@@ -349,13 +348,13 @@ export interface FileRouteTypes {
     | '/services/wellness'
     | '/about/'
     | '/opportunities/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
-  ServicesRoute: typeof ServicesRouteWithChildren
   AboutMissionRoute: typeof AboutMissionRoute
   AboutNetworkRoute: typeof AboutNetworkRoute
   AboutPhilosophyRoute: typeof AboutPhilosophyRoute
@@ -364,19 +363,26 @@ export interface RootRouteChildren {
   OpportunitiesConsumerRoute: typeof OpportunitiesConsumerRoute
   OpportunitiesInvestorRoute: typeof OpportunitiesInvestorRoute
   OpportunitiesMerchantRoute: typeof OpportunitiesMerchantRoute
+  ServicesDeliveryRoute: typeof ServicesDeliveryRoute
+  ServicesFinanceRoute: typeof ServicesFinanceRoute
+  ServicesFoundationRoute: typeof ServicesFoundationRoute
+  ServicesGyanRoute: typeof ServicesGyanRoute
+  ServicesMartRoute: typeof ServicesMartRoute
+  ServicesMediaRoute: typeof ServicesMediaRoute
+  ServicesPropertiesRoute: typeof ServicesPropertiesRoute
+  ServicesRishtaRoute: typeof ServicesRishtaRoute
+  ServicesRozgarRoute: typeof ServicesRozgarRoute
+  ServicesServicesRoute: typeof ServicesServicesRoute
+  ServicesTechnologyRoute: typeof ServicesTechnologyRoute
+  ServicesTravelsRoute: typeof ServicesTravelsRoute
+  ServicesWellnessRoute: typeof ServicesWellnessRoute
   AboutIndexRoute: typeof AboutIndexRoute
   OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/faq': {
       id: '/faq'
       path: '/faq'
@@ -398,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/opportunities/': {
       id: '/opportunities/'
       path: '/opportunities'
@@ -414,94 +427,94 @@ declare module '@tanstack/react-router' {
     }
     '/services/wellness': {
       id: '/services/wellness'
-      path: '/wellness'
+      path: '/services/wellness'
       fullPath: '/services/wellness'
       preLoaderRoute: typeof ServicesWellnessRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/travels': {
       id: '/services/travels'
-      path: '/travels'
+      path: '/services/travels'
       fullPath: '/services/travels'
       preLoaderRoute: typeof ServicesTravelsRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/technology': {
       id: '/services/technology'
-      path: '/technology'
+      path: '/services/technology'
       fullPath: '/services/technology'
       preLoaderRoute: typeof ServicesTechnologyRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/services': {
       id: '/services/services'
-      path: '/services'
+      path: '/services/services'
       fullPath: '/services/services'
       preLoaderRoute: typeof ServicesServicesRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/rozgar': {
       id: '/services/rozgar'
-      path: '/rozgar'
+      path: '/services/rozgar'
       fullPath: '/services/rozgar'
       preLoaderRoute: typeof ServicesRozgarRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/rishta': {
       id: '/services/rishta'
-      path: '/rishta'
+      path: '/services/rishta'
       fullPath: '/services/rishta'
       preLoaderRoute: typeof ServicesRishtaRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/properties': {
       id: '/services/properties'
-      path: '/properties'
+      path: '/services/properties'
       fullPath: '/services/properties'
       preLoaderRoute: typeof ServicesPropertiesRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/media': {
       id: '/services/media'
-      path: '/media'
+      path: '/services/media'
       fullPath: '/services/media'
       preLoaderRoute: typeof ServicesMediaRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/mart': {
       id: '/services/mart'
-      path: '/mart'
+      path: '/services/mart'
       fullPath: '/services/mart'
       preLoaderRoute: typeof ServicesMartRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/gyan': {
       id: '/services/gyan'
-      path: '/gyan'
+      path: '/services/gyan'
       fullPath: '/services/gyan'
       preLoaderRoute: typeof ServicesGyanRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/foundation': {
       id: '/services/foundation'
-      path: '/foundation'
+      path: '/services/foundation'
       fullPath: '/services/foundation'
       preLoaderRoute: typeof ServicesFoundationRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/finance': {
       id: '/services/finance'
-      path: '/finance'
+      path: '/services/finance'
       fullPath: '/services/finance'
       preLoaderRoute: typeof ServicesFinanceRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/delivery': {
       id: '/services/delivery'
-      path: '/delivery'
+      path: '/services/delivery'
       fullPath: '/services/delivery'
       preLoaderRoute: typeof ServicesDeliveryRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/opportunities/merchant': {
       id: '/opportunities/merchant'
@@ -562,23 +575,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface ServicesRouteChildren {
-  ServicesDeliveryRoute: typeof ServicesDeliveryRoute
-  ServicesFinanceRoute: typeof ServicesFinanceRoute
-  ServicesFoundationRoute: typeof ServicesFoundationRoute
-  ServicesGyanRoute: typeof ServicesGyanRoute
-  ServicesMartRoute: typeof ServicesMartRoute
-  ServicesMediaRoute: typeof ServicesMediaRoute
-  ServicesPropertiesRoute: typeof ServicesPropertiesRoute
-  ServicesRishtaRoute: typeof ServicesRishtaRoute
-  ServicesRozgarRoute: typeof ServicesRozgarRoute
-  ServicesServicesRoute: typeof ServicesServicesRoute
-  ServicesTechnologyRoute: typeof ServicesTechnologyRoute
-  ServicesTravelsRoute: typeof ServicesTravelsRoute
-  ServicesWellnessRoute: typeof ServicesWellnessRoute
-}
-
-const ServicesRouteChildren: ServicesRouteChildren = {
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  AboutMissionRoute: AboutMissionRoute,
+  AboutNetworkRoute: AboutNetworkRoute,
+  AboutPhilosophyRoute: AboutPhilosophyRoute,
+  AboutVisionRoute: AboutVisionRoute,
+  OpportunitiesCareerRoute: OpportunitiesCareerRoute,
+  OpportunitiesConsumerRoute: OpportunitiesConsumerRoute,
+  OpportunitiesInvestorRoute: OpportunitiesInvestorRoute,
+  OpportunitiesMerchantRoute: OpportunitiesMerchantRoute,
   ServicesDeliveryRoute: ServicesDeliveryRoute,
   ServicesFinanceRoute: ServicesFinanceRoute,
   ServicesFoundationRoute: ServicesFoundationRoute,
@@ -592,27 +600,9 @@ const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesTechnologyRoute: ServicesTechnologyRoute,
   ServicesTravelsRoute: ServicesTravelsRoute,
   ServicesWellnessRoute: ServicesWellnessRoute,
-}
-
-const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
-  ServicesRouteChildren,
-)
-
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  ContactRoute: ContactRoute,
-  FaqRoute: FaqRoute,
-  ServicesRoute: ServicesRouteWithChildren,
-  AboutMissionRoute: AboutMissionRoute,
-  AboutNetworkRoute: AboutNetworkRoute,
-  AboutPhilosophyRoute: AboutPhilosophyRoute,
-  AboutVisionRoute: AboutVisionRoute,
-  OpportunitiesCareerRoute: OpportunitiesCareerRoute,
-  OpportunitiesConsumerRoute: OpportunitiesConsumerRoute,
-  OpportunitiesInvestorRoute: OpportunitiesInvestorRoute,
-  OpportunitiesMerchantRoute: OpportunitiesMerchantRoute,
   AboutIndexRoute: AboutIndexRoute,
   OpportunitiesIndexRoute: OpportunitiesIndexRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
