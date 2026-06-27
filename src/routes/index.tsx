@@ -1003,7 +1003,7 @@ function Services() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="mt-14 grid gap-5 grid-cols-[repeat(auto-fit,minmax(220px,1fr))]"
+          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
           {items.map((s) => (
             <motion.div
