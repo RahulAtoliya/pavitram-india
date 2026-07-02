@@ -695,10 +695,10 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
 
 function HeroDiagram() {
   const labels = [
-    { text: "Intellectual Citizen", pos: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" },
-    { text: "Prosperous Family", pos: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2" },
+    { text: "Prosperous Family", pos: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" },
+    { text: "Self-Reliant Society", pos: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2" },
     { text: "Developed India", pos: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" },
-    { text: "Self-Reliant Society", pos: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2" },
+    { text: "Intellectual Citizen", pos: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2" },
   ];
 
   return (
@@ -794,19 +794,8 @@ function Hero() {
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] text-white md:text-7xl lg:text-[80px]">
-              Pavitram{" "}
-              <span className="relative inline-block">
-                India
-                <span className="absolute -bottom-2 left-0 h-1 w-full origin-left rounded-full bg-gradient-to-r from-gold to-gold-light animate-draw-underline" />
-              </span>
+              Pavitram India
             </h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="mt-8 font-display text-xl italic text-gold md:text-[22px]">
-              Intellectual Citizen, Prosperous Family,
-              <br />
-              Self-Reliant Society, Developed India
-            </p>
           </Reveal>
           <Reveal delay={0.3}>
             <p className="mt-6 max-w-[520px] text-[17px] leading-[1.8] text-white/65">
@@ -840,34 +829,6 @@ function Hero() {
         <Reveal delay={0.3}>
           <HeroDiagram />
         </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Stats() {
-  const items = [
-    { icon: UsersRound, value: 10000, suffix: "+", label: "Community Members" },
-    { icon: Cpu, value: 8, suffix: "", label: "Service Sectors" },
-    { icon: BookOpen, value: 27, suffix: "", label: "Golden Rules" },
-    { icon: Globe, value: 15, suffix: "+", label: "States Covered" },
-  ];
-  return (
-    <section className="bg-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-y-10 px-6 py-16 md:grid-cols-4 md:divide-x md:divide-haze md:gap-y-0">
-        {items.map((it, i) => (
-          <Reveal key={i} delay={i * 0.08} className="flex flex-col items-center text-center">
-            <div className="grid h-14 w-14 place-items-center rounded-full bg-[#FDF3E0]">
-              <it.icon className="h-6 w-6 text-gold" />
-            </div>
-            <div className="mt-4 font-display text-4xl font-bold text-ink md:text-[42px]">
-              <CountUp to={it.value} suffix={it.suffix} />
-            </div>
-            <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-mist">
-              {it.label}
-            </div>
-          </Reveal>
-        ))}
       </div>
     </section>
   );
@@ -1330,11 +1291,11 @@ function AssociationWith({ onOpenModal }: { onOpenModal: (data: ModalData) => vo
     <section className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <GoldLabel>ASSOCIATION WITH</GoldLabel>
+          <GoldLabel>STRATEGIC PARTNERSHIPS</GoldLabel>
           <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-ink md:text-[48px]">
-            Who We Work With
+            Our Strategic Partners
           </h2>
-          <p className="mt-3 font-deva text-lg font-semibold text-gold">हमारे सहयोगी</p>
+          <p className="mt-3 font-deva text-lg font-semibold text-gold">रणनीतिक सहभागिता</p>
           <p className="mx-auto mt-6 max-w-xl text-mist">
             Pavitram India builds powerful associations at every level — from government bodies to
             grassroots organizations — to create maximum impact for our members.
@@ -1456,12 +1417,6 @@ function Services() {
       title: "Pavitram Delivery",
       text: "Logistics, anything, anywhere, anytime",
       to: "/services/delivery",
-    },
-    {
-      icon: Heart,
-      title: "Pavitram Foundation",
-      text: "Social welfare and community impact",
-      to: "/services/foundation",
     },
   ];
 
@@ -1628,65 +1583,94 @@ function Network() {
       text: "Highest integrity and accountability at every level",
     },
   ];
+
+  const stats = [
+    { icon: UsersRound, value: 10000, suffix: "+", label: "Community Members" },
+    { icon: Cpu, value: 12, suffix: "", label: "Service Sectors" },
+    { icon: BookOpen, value: 27, suffix: "", label: "Golden Rules" },
+    { icon: Globe, value: 15, suffix: "+", label: "States Covered" },
+  ];
+
   return (
     <section className="bg-white py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[1.4fr_1fr] lg:items-center">
-        <div className="text-left">
-          <Reveal>
-            <GoldLabel>Business Network</GoldLabel>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-ink md:text-[52px]">
-              The Pavitram Business Network
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-4 font-display text-xl italic text-gold">
-              Cooperative. Transparent. Nationwide.
-            </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="mt-6 max-w-2xl text-mist">
-              Pavitram India is a professionally managed cooperative business network and a
-              self-reliant community where the needs of members are fulfilled by the members
-              themselves.
-            </p>
-          </Reveal>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="mt-10 grid gap-5 sm:grid-cols-2"
-          >
-            {feats.map((f) => (
-              <motion.div
-                key={f.title}
-                variants={fadeUp}
-                className="rounded-[20px] border border-haze bg-white p-5 card-shadow"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#FDF3E0] text-gold">
-                    <f.icon className="h-5 w-5" />
-                  </div>
-                  <h4 className="font-display text-lg font-bold text-ink">{f.title}</h4>
-                </div>
-                <p className="mt-3 text-sm leading-[1.7] text-mist">{f.text}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-          <Reveal delay={0.2}>
-            <Link
-              to="/about/network"
-              className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-ink px-6 py-3 text-sm font-bold text-ink transition hover:bg-ink hover:text-white"
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-16 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+          <div className="text-left">
+            <Reveal>
+              <GoldLabel>Business Network</GoldLabel>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-ink md:text-[52px]">
+                The Pavitram Business Network
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-4 font-display text-xl italic text-gold">
+                Cooperative. Transparent. Nationwide.
+              </p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="mt-6 max-w-2xl text-mist">
+                Pavitram India is a professionally managed cooperative business network and a
+                self-reliant community where the needs of members are fulfilled by the members
+                themselves.
+              </p>
+            </Reveal>
+            <motion.div
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="mt-10 grid gap-5 sm:grid-cols-2"
             >
-              Learn About Our Network <ArrowRight className="h-4 w-4" />
-            </Link>
+              {feats.map((f) => (
+                <motion.div
+                  key={f.title}
+                  variants={fadeUp}
+                  className="rounded-[20px] border border-haze bg-white p-5 card-shadow"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#FDF3E0] text-gold">
+                      <f.icon className="h-5 w-5" />
+                    </div>
+                    <h4 className="font-display text-lg font-bold text-ink">{f.title}</h4>
+                  </div>
+                  <p className="mt-3 text-sm leading-[1.7] text-mist">{f.text}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+            <Reveal delay={0.2}>
+              <Link
+                to="/about/network"
+                className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-ink px-6 py-3 text-sm font-bold text-ink transition hover:bg-ink hover:text-white"
+              >
+                Learn About Our Network <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
+          </div>
+          <Reveal delay={0.2}>
+            <NetworkRings />
           </Reveal>
         </div>
-        <Reveal delay={0.2}>
-          <NetworkRings />
-        </Reveal>
+
+        {/* Integrated Stats Bar */}
+        <div className="mt-20 border-t border-haze pt-16">
+          <div className="grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-4 md:divide-x md:divide-haze md:gap-y-0 text-center">
+            {stats.map((it, i) => (
+              <Reveal key={i} delay={i * 0.08} className="flex flex-col items-center">
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-[#FDF3E0] text-gold">
+                  <it.icon className="h-5.5 w-5.5" />
+                </div>
+                <div className="mt-4 font-display text-3.5xl font-bold text-ink md:text-[38px]">
+                  <CountUp to={it.value} suffix={it.suffix} />
+                </div>
+                <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-mist">
+                  {it.label}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -1764,32 +1748,6 @@ function Testimonials() {
   );
 }
 
-function CTABanner() {
-  return (
-    <section className="relative isolate overflow-hidden bg-navy py-24">
-      <div className="mx-auto max-w-5xl px-6 text-center">
-        <Reveal>
-          <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">
-            Join the Pavitram India Movement Today
-          </h2>
-          <p className="mt-4 text-lg text-white/70">
-            Be part of a self-reliant cooperative community that values your trust and empowers your
-            family.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-sm font-bold text-navy transition hover:bg-white hover:scale-105"
-            >
-              Get Started <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 /* ─────────── Main Page ─────────── */
 
 function Index() {
@@ -1798,19 +1756,26 @@ function Index() {
   return (
     <>
       <Hero />
-      <Stats />
-      <Pillars onOpenModal={(data) => setModalData(data)} /> {/* Section A: Our Vision */}
-      <Mission onOpenModal={(data) => setModalData(data)} /> {/* Section B: Our Mission */}
-      <Philosophy onOpenModal={(data) => setModalData(data)} /> {/* Section C: Our Philosophy */}
-      <Presence onOpenModal={(data) => setModalData(data)} /> {/* Section D: Our Presence */}
-      <Opportunities /> {/* Section E: Opportunities */}
-      <AssociationWith onOpenModal={(data) => setModalData(data)} />{" "}
-      {/* Section F: Association With */}
-      <Services /> {/* Section G: Our Working Areas / Core Services */}
+      {/* 4) Our Vision */}
+      <Pillars onOpenModal={(data) => setModalData(data)} />
+      {/* 5) Our Mission */}
+      <Mission onOpenModal={(data) => setModalData(data)} />
+      {/* 6) Our Philosophy */}
+      <Philosophy onOpenModal={(data) => setModalData(data)} />
+      {/* 7) Our Service (12) */}
+      <Services />
+      {/* 8) Opportunities */}
+      <Opportunities />
+      {/* 9) Association With */}
+      <AssociationWith onOpenModal={(data) => setModalData(data)} />
+      {/* 9) Business Network */}
       <Network />
-      <Testimonials />
-      <CTABanner />
+      {/* 10) Our Presence */}
+      <Presence onOpenModal={(data) => setModalData(data)} />
+      {/* 12) Be Organised */}
       <FinalCTA />
+      {/* 13) Comment (Testimonials) */}
+      <Testimonials />
       {/* Global Premium Modal */}
       <PremiumModal data={modalData} onClose={() => setModalData(null)} />
     </>

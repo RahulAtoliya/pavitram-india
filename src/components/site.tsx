@@ -120,7 +120,6 @@ const SERVICES_GRID: [string, string][] = [
   ["Pavitram Travels", "Pavitram Rishta"],
   ["Pavitram Rozgar", "Pavitram Services"],
   ["Pavitram Media", "Pavitram Delivery"],
-  ["Pavitram Foundation", ""],
 ];
 
 const SERVICE_SLUGS: Record<string, string> = {
@@ -136,7 +135,6 @@ const SERVICE_SLUGS: Record<string, string> = {
   "Pavitram Services": "/services/services",
   "Pavitram Media": "/services/media",
   "Pavitram Delivery": "/services/delivery",
-  "Pavitram Foundation": "/services/foundation",
 };
 
 export function Navbar() {
@@ -594,10 +592,13 @@ export function FinalCTA() {
         }}
       />
       <Reveal className="relative mx-auto max-w-4xl px-6 text-center">
-        <h2 className="font-display text-4xl font-bold text-white text-balance md:text-[56px] leading-[1.1]">
-          Be Organised · Be Educated · <span className="text-gold">Be Empowered</span>
+        <h2 className="font-display text-2xl font-bold text-white text-balance sm:text-3xl md:text-[42px] lg:text-[46px] leading-[1.2]">
+          Be Organised, Do Organised · Be Educated, Make Educated ·{" "}
+          <span className="text-gold">Be Empowered, Make Empowered</span>
         </h2>
-        <p className="mt-5 font-deva text-xl text-white/70">संगठित बनो · शिक्षित बनो · सशक्त बनो</p>
+        <p className="mt-5 font-deva text-lg sm:text-xl text-white/70">
+          संगठित बनो, संगठित करो · शिक्षित बनो, शिक्षित करो · सशक्त बनो, सशक्त करो
+        </p>
         <p className="mx-auto mt-6 max-w-2xl text-white/70">
           Join thousands of network partners working together for a self-reliant, prosperous India.
           Your contribution matters.
