@@ -32,6 +32,8 @@ import {
   Truck,
   User,
   Store,
+  Factory,
+  Warehouse,
   TrendingUp,
   BriefcaseBusiness,
   Globe,
@@ -1544,20 +1546,24 @@ function NetworkRings() {
 function Network() {
   const feats = [
     {
-      icon: UsersRound,
-      title: "Business Network",
-      text: "Connect with 10,000+ members across sectors",
-    },
-    { icon: Globe, title: "Pan-India Reach", text: "Services and business spanning 15+ states" },
-    {
-      icon: BarChart3,
-      title: "Growth Focused",
-      text: "Transparent cooperative model with 12%+ returns",
+      icon: Factory,
+      title: "Manufacturer",
+      text: "Connecting local production units and raw material processors to build strong domestic supply chains.",
     },
     {
-      icon: ShieldCheck,
-      title: "Ethical Standards",
-      text: "Highest integrity and accountability at every level",
+      icon: Warehouse,
+      title: "Wholesaler",
+      text: "Facilitating bulk inventory distribution and regional trade connectivity within the ecosystem.",
+    },
+    {
+      icon: Store,
+      title: "Retailer",
+      text: "Powering local storefronts and retail markets to deliver products directly to community consumers.",
+    },
+    {
+      icon: Wrench,
+      title: "Service Provider",
+      text: "Deploying professional skills, digital services, and household maintenance directly to members.",
     },
   ];
 
@@ -1571,67 +1577,61 @@ function Network() {
   return (
     <section className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-16 lg:grid-cols-[1.4fr_1fr] lg:items-center">
-          <div className="text-left">
-            <Reveal>
-              <GoldLabel>Business Network</GoldLabel>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-ink md:text-[52px]">
-                The Pavitram Business Network
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="mt-4 font-display text-xl italic text-gold">
-                Cooperative. Transparent. Nationwide.
-              </p>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="mt-6 max-w-2xl text-mist">
-                Pavitram India is a professionally managed cooperative business network and a
-                self-reliant community where the needs of members are fulfilled by the members
-                themselves.
-              </p>
-            </Reveal>
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <GoldLabel>Business Network</GoldLabel>
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-ink md:text-[52px]">
+            The Pavitram Business Network
+          </h2>
+          <p className="mt-4 font-display text-xl italic text-gold">
+            Cooperative. Transparent. Nationwide.
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-mist">
+            Pavitram India is a professionally managed cooperative business network and a
+            self-reliant community where the needs of members are fulfilled by the members
+            themselves.
+          </p>
+          <div className="mx-auto mt-6 h-0.5 w-20 bg-gold" />
+        </Reveal>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {feats.map((f) => (
             <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="mt-10 grid gap-5 sm:grid-cols-2"
+              key={f.title}
+              variants={fadeUp}
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="group flex flex-col items-center text-center rounded-[20px] border border-haze bg-white p-7 card-shadow transition-all duration-300 hover:border-gold"
             >
-              {feats.map((f) => (
-                <motion.div
-                  key={f.title}
-                  variants={fadeUp}
-                  className="rounded-[20px] border border-haze bg-white p-5 card-shadow"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#FDF3E0] text-gold">
-                      <f.icon className="h-5 w-5" />
-                    </div>
-                    <h4 className="font-display text-lg font-bold text-ink">{f.title}</h4>
-                  </div>
-                  <p className="mt-3 text-sm leading-[1.7] text-mist">{f.text}</p>
-                </motion.div>
-              ))}
+              <div className="grid h-14 w-14 place-items-center rounded-2xl bg-[#FDF3E0] text-gold transition-colors group-hover:bg-gold group-hover:text-white">
+                <f.icon className="h-6 w-6" />
+              </div>
+              <h4 className="mt-6 font-display text-xl font-bold text-ink">{f.title}</h4>
+              <p className="mt-3 text-sm leading-[1.7] text-mist">{f.text}</p>
             </motion.div>
-            <Reveal delay={0.2}>
-              <Link
-                to="/about/network"
-                className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-ink px-6 py-3 text-sm font-bold text-ink transition hover:bg-ink hover:text-white"
-              >
-                Learn About Our Network <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Reveal>
-          </div>
+          ))}
+        </motion.div>
+
+        <div className="mt-20 flex flex-col items-center gap-10">
           <Reveal delay={0.2}>
             <NetworkRings />
+          </Reveal>
+          <Reveal delay={0.3}>
+            <Link
+              to="/about/network"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-ink px-7 py-3.5 text-sm font-bold text-ink transition hover:bg-ink hover:text-white"
+            >
+              Learn About Our Network <ArrowRight className="h-4 w-4" />
+            </Link>
           </Reveal>
         </div>
 
         {/* Integrated Stats Bar */}
-        <div className="mt-20 border-t border-haze pt-16">
+        <div className="mt-24 border-t border-haze pt-16">
           <div className="grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-4 md:divide-x md:divide-haze md:gap-y-0 text-center">
             {stats.map((it, i) => (
               <Reveal key={i} delay={i * 0.08} className="flex flex-col items-center">
