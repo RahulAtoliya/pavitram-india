@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# 1. Sabhi requests ko dist folder ki taraf route karein
+RewriteRule ^$ dist/ [L]
+
+# 2. Agar request dist folder ke andar ki kisi file/folder ke liye nahi hai...
+RewriteCond %{REQUEST_URI} !^/dist/
+
+# 3. Toh use dist folder me redirect karein
+RewriteRule ^(.*)$ dist/$1 [L]
